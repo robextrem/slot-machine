@@ -23,6 +23,7 @@ module.exports = {
     },
     "rules": {
         "@typescript-eslint/indent": "off",
+        "@typescript-eslint/prefer-readonly": "off",
         "@typescript-eslint/strict-boolean-expressions": "off"
     }
 }
