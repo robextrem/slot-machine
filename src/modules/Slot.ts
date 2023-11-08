@@ -1,24 +1,22 @@
 import * as PIXI from 'pixi.js'
 
-export class Slot extends PIXI.Container {
+export default class Slot extends PIXI.Container {
     private index: number
-    private sWidth: number
-    private sHeight: number
     private sprite: PIXI.Sprite
 
-    constructor (width: number, height: number) {
+    constructor (size: number, maxWidth: number, index: number) {
         super()
-        this.index = 1
-        this.sWidth = width
-        this.sHeight = height
+        this.index = index
         this.sprite = new PIXI.Sprite()
-        // this.sprite.position.set((this.x = 700), (this.y = 200));
-        this.sprite.position.set(0, height * 0)
+        this.sprite.height = this.sprite.width = size > maxWidth ? maxWidth : size
+
         this.addChild(this.sprite)
-        this.swap()
+        this.swap().catch((e) => {
+            console.log(e)
+        })
     }
 
-    public async swap (): void {
+    public async swap (): Promise<void> {
         this.index = Math.floor(Math.random() * 4)
         const sheet = await PIXI.Assets.load('../src/assets/images/spritesheet.json')
         // TODO: NO TOMA EL SPRITE COMO TAL

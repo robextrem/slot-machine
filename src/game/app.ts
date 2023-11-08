@@ -1,35 +1,39 @@
 import * as BABYLON from 'babylonjs'
 import * as PIXI from 'pixi.js'
-import Reel from './Reel'
+import Machine from '../modules/Machine'
 
 const canvas = document.querySelector('#app') as HTMLCanvasElement
 const engine = new BABYLON.Engine(canvas, true)
 
 const createScene = (): any => {
   const scene = new BABYLON.Scene(engine)
+  // 
+  scene.autoClear = false
   scene.createDefaultCamera()
   return scene
 }
 
 const scene = createScene()
 
-engine.runRenderLoop(() => {
-  scene.render()
-  app.render()
-})
-
 const app = new PIXI.Application({
     clearBeforeRender: false,
     view: engine.getRenderingCanvas() ?? canvas,
-    background: '#fff'
+    background: '#fff',
+    backgroundAlpha: 0,
+    height: 600
 })
 
-const reel = new Reel(96, 96, 0)
-const reel2 = new Reel(96, 96, 1)
-const reel3 = new Reel(96, 96, 2)
+/* @ts-expect-error */
+globalThis.__PIXI_APP__ = app
 
-app.stage.addChild(reel)
-app.stage.addChild(reel2)
-app.stage.addChild(reel3)
+engine.runRenderLoop(() => {
+  scene.render()
+  scene.clearColor = new BABYLON.Color4(0, 0, 0, 0)
+  app.render()
+})
+
+const machine = new Machine(app.screen.width, 600)
+
+app.stage.addChild(machine)
 
 export { engine, app }
