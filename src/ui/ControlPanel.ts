@@ -8,17 +8,19 @@ export default class ControlPanel extends PIXI.Container {
     constructor (width: number, height: number) {
         super()
         this.container = new PIXI.Container()
-        // this.container.mask = rectMask
+        // TODO: Identificar formula
+        const size = (height / 4) / 2
 
         this.addChild(this.container)
 
         const bottom = new PIXI.Graphics()
         bottom.beginFill(0, 1)
-        bottom.drawRect(0, height - 100, width, 100)
+        bottom.drawRect(0, height - size, width, size)
 
         this.button = new Button()
-        this.button.x = width - 130
-        this.button.y = height - 50
+        this.button.x = width - 80
+        this.button.y = height - 36
+
         bottom.addChild(this.button)
         this.container.addChild(bottom)
     }

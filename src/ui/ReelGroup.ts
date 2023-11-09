@@ -1,11 +1,9 @@
 import * as PIXI from 'pixi.js'
 import Reel from './Reel'
-import ControlPanel from './ControlPanel'
 
-export default class Machine extends PIXI.Container {
+export default class ReelGroup extends PIXI.Container {
     private numberOfReels: number
     private reels: Reel[]
-    private panel: ControlPanel
     private container: PIXI.Container
 
     constructor (width: number, height: number) {
@@ -22,8 +20,5 @@ export default class Machine extends PIXI.Container {
             this.container.addChild(reel)
             this.reels.push(reel)
         }
-
-        this.panel = new ControlPanel(this.width, this.height)
-        this.container.addChild(this.panel)
     }
 }

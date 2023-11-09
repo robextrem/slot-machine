@@ -1,5 +1,6 @@
 
 html,body{
+  background-color: white;
   padding:0;
   margin: 0;
   height:100%;
@@ -7,6 +8,15 @@ html,body{
 }
 
 canvas{
-  background-color: transparent;
+  background-color: white;
   outline: none;
+  border: 5px double black;
+}
+
+#app{
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
 }
