@@ -17,8 +17,13 @@ export default class ReelGroup extends PIXI.Container {
 
         for (let i = 0; i < this.numberOfReels; i++) {
             const reel = new Reel(Math.floor(width / 5), height, i)
+            reel.position.set(0, 37.5)
             this.container.addChild(reel)
             this.reels.push(reel)
         }
+    }
+
+    getReels = (): Reel[] => {
+        return this.reels
     }
 }

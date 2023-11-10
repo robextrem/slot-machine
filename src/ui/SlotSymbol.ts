@@ -1,15 +1,15 @@
 import * as PIXI from 'pixi.js'
 
-export default class Slot extends PIXI.Container {
+export default class SlotSymbol extends PIXI.Container {
     private index: number
     private sprite: PIXI.Sprite
 
-    constructor (size: number, maxWidth: number, index: number) {
+    constructor (size: number, maxWidth: number) {
         super()
-        this.index = index
+        this.index = 0
         this.sprite = new PIXI.Sprite()
         this.sprite.height = this.sprite.width = size > maxWidth ? maxWidth : size
-
+        
         this.addChild(this.sprite)
         this.swap().catch((e) => {
             console.log(e)
@@ -22,4 +22,5 @@ export default class Slot extends PIXI.Container {
         // TODO: NO TOMA EL SPRITE COMO TAL
         this.sprite.texture = PIXI.Texture.from(sheet.data.frames[`${this.index}`].image)
     }
+
 }

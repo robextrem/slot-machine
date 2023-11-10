@@ -1,25 +1,30 @@
 import * as PIXI from 'pixi.js'
+import SlotSymbol from './SlotSymbol'
 
 export default class Slot extends PIXI.Container {
-    private index: number
-    private sprite: PIXI.Sprite
+    private symbol: SlotSymbol
+    private container: PIXI.Container
 
-    constructor (size: number, maxWidth: number, index: number) {
+    constructor () {
         super()
-        this.index = index
-        this.sprite = new PIXI.Sprite()
-        this.sprite.height = this.sprite.width = size > maxWidth ? maxWidth : size
+        const blockSize = Math.ceil(parseInt(import.meta.env.VITE_APP_WIDTH) / 5)
 
-        this.addChild(this.sprite)
-        this.swap().catch((e) => {
-            console.log(e)
-        })
+        this.container = new PIXI.Container()
+        this.addChild(this.container)
+
+        const size = parseInt(import.meta.env.VITE_APP_SLOT_SIZE)
+        const margin = Math.floor((blockSize - size) / 2)
+
+        const symbol = new SlotSymbol(size, blockSize)
+        const x = margin
+        const y = margin
+        symbol.position.set(x, y - blockSize / 1.25)
+        this.container.addChild(symbol)
+        this.symbol = symbol
     }
 
     public async swap (): Promise<void> {
-        this.index = Math.floor(Math.random() * 4)
-        const sheet = await PIXI.Assets.load('../src/assets/images/spritesheet.json')
-        // TODO: NO TOMA EL SPRITE COMO TAL
-        this.sprite.texture = PIXI.Texture.from(sheet.data.frames[`${this.index}`].image)
+        await this.symbol.swap()
     }
+
 }

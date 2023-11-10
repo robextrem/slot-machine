@@ -19,15 +19,15 @@ dependencies:
     version: 7.3.2(@pixi/utils@7.3.2)
 
 devDependencies:
-  '@types/tween.js':
-    specifier: ^18.6.1
-    version: 18.6.1
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.4.0
     version: 6.10.0(@typescript-eslint/parser@6.10.0)(eslint@8.53.0)(typescript@5.2.2)
   eslint:
     specifier: ^8.0.1
     version: 8.53.0
+  eslint-config-prettier:
+    specifier: ^9.0.0
+    version: 9.0.0(eslint@8.53.0)
   eslint-config-standard-with-typescript:
     specifier: ^39.1.1
     version: 39.1.1(@typescript-eslint/eslint-plugin@6.10.0)(eslint-plugin-import@2.29.0)(eslint-plugin-n@16.2.0)(eslint-plugin-promise@6.1.1)(eslint@8.53.0)(typescript@5.2.2)
@@ -46,6 +46,9 @@ devDependencies:
   npm:
     specifier: ^10.2.3
     version: 10.2.3
+  prettier:
+    specifier: 3.0.3
+    version: 3.0.3
   sass:
     specifier: ^1.69.5
     version: 1.69.5
@@ -696,6 +699,7 @@ packages:
 
   /@tweenjs/tween.js@21.0.0:
     resolution: {integrity: sha512-qVfOiFh0U8ZSkLgA6tf7kj2MciqRbSCWaJZRwftVO7UbtVDNsZAXpWXqvCDtIefvjC83UJB+vHTDOGm5ibXjEA==}
+    dev: false
 
   /@types/css-font-loading-module@0.0.7:
     resolution: {integrity: sha512-nl09VhutdjINdWyXxHWN/w9zlNCfr60JUqJbd24YXUuCwgeL0TpFSdElCwb6cxfB6ybE19Gjj4g0jsgkXxKv1Q==}
@@ -719,13 +723,6 @@ packages:
 
   /@types/semver@7.5.4:
     resolution: {integrity: sha512-MMzuxN3GdFwskAnb6fz0orFvhfqi752yjaXylr0Rp4oDg5H0Zn1IuyRhDVvYOwAXoJirx2xuS16I3WjxnAIHiQ==}
-    dev: true
-
-  /@types/tween.js@18.6.1:
-    resolution: {integrity: sha512-TJsLKUQtHPMvxEzh9Iy1Rb8C+a1q8IRrZsYy21LX4l9mhVtvfkPzQ7p7SA25N2YvCm0dEZ0V0y/5cPOnGI/atw==}
-    deprecated: This is a stub types definition. @tweenjs/tween.js provides its own type definitions, so you do not need this installed.
-    dependencies:
-      '@tweenjs/tween.js': 21.0.0
     dev: true
 
   /@typescript-eslint/eslint-plugin@6.10.0(@typescript-eslint/parser@6.10.0)(eslint@8.53.0)(typescript@5.2.2):
@@ -1246,6 +1243,15 @@ packages:
   /escape-string-regexp@4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
+    dev: true
+
+  /eslint-config-prettier@9.0.0(eslint@8.53.0):
+    resolution: {integrity: sha512-IcJsTkJae2S35pRsRAwoCE+925rJJStOdkKnLVgtE+tEpqU0EVVM7OqrwxqgptKdX29NUwC82I5pXsGFIgSevw==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dependencies:
+      eslint: 8.53.0
     dev: true
 
   /eslint-config-standard-with-typescript@39.1.1(@typescript-eslint/eslint-plugin@6.10.0)(eslint-plugin-import@2.29.0)(eslint-plugin-n@16.2.0)(eslint-plugin-promise@6.1.1)(eslint@8.53.0)(typescript@5.2.2):
@@ -2255,6 +2261,12 @@ packages:
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier@3.0.3:
+    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /punycode@1.4.1:

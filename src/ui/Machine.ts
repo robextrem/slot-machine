@@ -15,7 +15,18 @@ export default class Machine extends PIXI.Container {
         this.reelGroup = new ReelGroup(width, height)
         this.container.addChild(this.reelGroup)
 
-        this.panel = new ControlPanel(width, height)
+        this.panel = new ControlPanel(width, height, this)
         this.container.addChild(this.panel)
+    }
+
+    public startPlay = (): void => {
+        const duration = parseInt(import.meta.env.VITE_APP_SPIN_DURATION)
+        const delay = parseInt(import.meta.env.VITE_APP_SPIN_DELAY)
+
+        this.reelGroup.getReels().forEach((reel) => {
+            reel.spin(duration, delay, () => {
+                this.panel.getButton().changeState('idle')
+            })
+        })
     }
 }
