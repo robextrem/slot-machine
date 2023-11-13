@@ -1,6 +1,9 @@
 import * as PIXI from 'pixi.js'
-import * as TWEEN from '@tweenjs/tween.js'
+import { gsap } from "gsap"
+import { PixiPlugin } from "gsap/PixiPlugin"
 import Slot from './Slot'
+gsap.registerPlugin(PixiPlugin);
+PixiPlugin.registerPIXI(PIXI);
 
 export default class Reel extends PIXI.Container {
     private index: number
@@ -20,13 +23,12 @@ export default class Reel extends PIXI.Container {
         this.speed = parseInt(import.meta.env.VITE_APP_REEL_SPEED)
         this.slots = []
         this.isSpeening = false
-        this.blur = new PIXI.BlurFilter(1, 1)
 
         const blockSize = parseInt(import.meta.env.VITE_APP_HEIGHT) / (parseInt(import.meta.env.VITE_APP_NUM_SLOTS) + 1)
         const rectMask: PIXI.Graphics = new PIXI.Graphics()
         rectMask.beginFill('white')
         rectMask.lineStyle({ color: 0x111111, alpha: 0.87, width: 1 })
-        rectMask.drawRect(width * this.index, -(blockSize/2), width, height)
+        rectMask.drawRect(width * this.index, -(blockSize / 2), width, height)
         rectMask.endFill()
 
         this.addChild(rectMask)
@@ -43,48 +45,40 @@ export default class Reel extends PIXI.Container {
     }
 
     public spin = (duration: number, delay: number, cb: () => void): void => {
-        const position = { x: 0, y: 1000, rotation: 0 }
-        const positionEnd = { x: 0, y: -100, rotation: 0 }
+
         const appHeight = parseInt(import.meta.env.VITE_APP_HEIGHT)
         const blockSize = parseInt(import.meta.env.VITE_APP_HEIGHT) / (parseInt(import.meta.env.VITE_APP_NUM_SLOTS) + 1)
 
-        const tween = new TWEEN.Tween(position)
-            .to(positionEnd, duration)
-            .delay(delay * this.index)
-           // .easing(TWEEN.Easing.Quadratic.InOut)
+         this.slots.forEach((slot, i) => {
+          const lastY = slot.y
+          const tween = gsap.timeline({ repeat: 0 });
 
-        tween.onUpdate((t: TWEEN) => {
-            // if(this.index === 0)
-            // console.log(t.y)
-            this.slots.forEach((slot) => {
-              slot.y += t.y> 0 ? 1 * this.speed : 1 * this.speed * -1
-              // slot.y += 1 * this.speed
-              if (slot.y >= appHeight + blockSize / 2) {
-                slot.y = -blockSize/2
-                slot.swap().catch(() => {})
-                this.slots.unshift(slot)
-                this.slots.pop()
-              }
-              if(!this.isSpeening){
-                this.setBlur(true)
-              }
-            })
-            this.isSpeening = true
-        })
-
-        tween.onComplete((t) => {
-          cb()
-          this.initialPosition()
-          this.setBlur(false)
-        })
-        
-        tween.start()
-
-        const animate = (time: number): void => {
-          tween.update(time)
-          requestAnimationFrame(animate)
-        }
-        requestAnimationFrame(animate)
+          tween.to(this, {
+            pixi: {blurY: 1},
+            duration,
+            delay: this.index * delay,
+            onUpdate: () => {
+              slot.y += 1 * this.speed
+                if (slot.y >= appHeight + blockSize / 2) {
+                  slot.y = - blockSize/2
+                  slot.swap().catch(() => {})
+                  this.slots.unshift(slot)
+                  this.slots.pop()
+                }
+            }
+          })
+          .to(slot, {
+            pixi: {positionY: lastY}, 
+            duration:0.3,
+            ease: "elastic.out",
+            onComplete: () => {
+              cb()
+              this.isSpeening=false
+            }
+          }).to(this, {
+            pixi: {blurY: 0, duration: 0}
+          })
+      })
     }
 
     private initialPosition():void {
@@ -94,10 +88,6 @@ export default class Reel extends PIXI.Container {
         slot.position.y = i * blockSize
       })
       this.isSpeening = false
-    }
-
-    private setBlur(value:boolean):void{
-      this.container.filters = value ? [this.blur] : null
     }
 
 }

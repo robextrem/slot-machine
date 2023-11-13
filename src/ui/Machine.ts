@@ -21,7 +21,7 @@ export default class Machine extends PIXI.Container {
 
     public startPlay = (): void => {
         const duration = parseInt(import.meta.env.VITE_APP_SPIN_DURATION)
-        const delay = parseInt(import.meta.env.VITE_APP_SPIN_DELAY)
+        const delay = parseFloat(import.meta.env.VITE_APP_SPIN_DELAY)
 
         this.reelGroup.getReels().forEach((reel) => {
             reel.spin(duration, delay, () => {
