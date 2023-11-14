@@ -10,15 +10,27 @@ export default class ReelGroup extends PIXI.Container {
         super()
         this.numberOfReels = import.meta.env.VITE_APP_NUM_REELS
         this.reels = []
-        const blockSize = parseInt(import.meta.env.VITE_APP_HEIGHT) / (parseInt(import.meta.env.VITE_APP_NUM_SLOTS) + 1)
+
+        const appWidth = import.meta.env.VITE_APP_WIDTH
+
+        const img = PIXI.Sprite.from('../src/assets/images/board.png');
+        img.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
+
+        img.width = 767
+        img.height = 447
+        img.anchor.set(0.5)
+        img.position.set(import.meta.env.VITE_APP_WIDTH / 2 , import.meta.env.VITE_APP_HEIGHT / 2)
+        this.addChild(img)
 
         this.container = new PIXI.Container()
-
+        this.container.height = height
+        this.container.width = width
+        this.container.position.set((appWidth - width) / 2, 180)
         this.addChild(this.container)
 
         for (let i = 0; i < this.numberOfReels; i++) {
             const reel = new Reel(Math.floor(width / 5), height, i)
-            reel.position.set(0, blockSize/3 )
+            // reel.position.set(0, 0)
             this.container.addChild(reel)
             this.reels.push(reel)
         }

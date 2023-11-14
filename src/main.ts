@@ -1,4 +1,4 @@
-import { engine, app } from './game/App'
+import { engine, app } from './game/PixiApp'
 import './assets/sass/styles.scss'
 
 // Ajustar el tamaño del lienzo cuando cambia el tamaño de la ventana

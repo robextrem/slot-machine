@@ -17,10 +17,15 @@ export default class SlotSymbol extends PIXI.Container {
     }
 
     public async swap (): Promise<void> {
-        this.index = Math.floor(Math.random() * 4)
+
+        const n = parseInt(import.meta.env.VITE_APP_NUM_SLOT_SYMBOLS)
+
+        this.index = Math.floor(Math.random() * (n > 7 ? 7 : n))
         const sheet = await PIXI.Assets.load('../src/assets/images/spritesheet.json')
         // TODO: NO TOMA EL SPRITE COMO TAL
         this.sprite.texture = PIXI.Texture.from(sheet.data.frames[`${this.index}`].image)
+        this.sprite.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.LINEAR
+
     }
 
 }
