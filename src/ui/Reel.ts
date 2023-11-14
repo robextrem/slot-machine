@@ -13,7 +13,6 @@ export default class Reel extends PIXI.Container {
     private isSpeening: boolean
     private reelWidth: number
     private container: PIXI.Container
-    private blur:PIXI.BlurFilter
 
     constructor (width: number, height: number, index: number) {
         super()
@@ -87,7 +86,6 @@ export default class Reel extends PIXI.Container {
         slot.position.x = this.reelWidth * this.index
         slot.position.y = i * blockSize
       })
-      this.isSpeening = false
     }
 
 }

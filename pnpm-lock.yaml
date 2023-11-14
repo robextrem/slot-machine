@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@tweenjs/tween.js':
-    specifier: ^21.0.0
-    version: 21.0.0
   babylonjs:
     specifier: ^6.28.1
     version: 6.28.1
@@ -698,10 +695,6 @@ packages:
       earcut: 2.2.4
       eventemitter3: 4.0.7
       url: 0.11.3
-    dev: false
-
-  /@tweenjs/tween.js@21.0.0:
-    resolution: {integrity: sha512-qVfOiFh0U8ZSkLgA6tf7kj2MciqRbSCWaJZRwftVO7UbtVDNsZAXpWXqvCDtIefvjC83UJB+vHTDOGm5ibXjEA==}
     dev: false
 
   /@types/css-font-loading-module@0.0.7:

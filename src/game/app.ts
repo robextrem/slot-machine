@@ -6,6 +6,7 @@ import Machine from '../ui/Machine'
 const canvas = document.querySelector('#canvas') as HTMLCanvasElement
 const engine = new BABYLON.Engine(canvas, true)
 const appHeight = import.meta.env.VITE_APP_HEIGHT
+const appWidth = import.meta.env.VITE_APP_WIDTH
 
 const createScene = (): any => {
   const scene = new BABYLON.Scene(engine)
@@ -22,7 +23,8 @@ const app = new PIXI.Application({
     view: engine.getRenderingCanvas() ?? canvas,
     background: '#fff',
     backgroundAlpha: 0,
-    height: appHeight
+    height: appHeight,
+    width: appWidth
 })
 
 /* @ts-expect-error */
