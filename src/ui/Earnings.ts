@@ -20,7 +20,7 @@ export default class Earnings extends PIXI.Container {
         // Add play text
         const style = new PIXI.TextStyle({
             fontFamily: 'Arial',
-            fontSize: 38,
+            fontSize: 36,
             fontStyle: 'normal',
             fontWeight: 'bold',
             fill: ['#B06830', '#FEDF6C'], // gradient
@@ -28,11 +28,10 @@ export default class Earnings extends PIXI.Container {
             strokeThickness: 2,
             dropShadow: true,
             dropShadowColor: '#000000',
-            dropShadowBlur: 4,
+            dropShadowBlur: 2,
             dropShadowAngle: Math.PI / 6,
             dropShadowDistance: 6,
-            wordWrap: true,
-            wordWrapWidth: 440,
+            wordWrap: true
         });
     
         const playText = new PIXI.Text('5000000', style);

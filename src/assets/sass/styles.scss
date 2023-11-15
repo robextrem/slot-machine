@@ -1,4 +1,3 @@
-
 html,body{
   background-color: #222;
   padding:0;
@@ -8,8 +7,8 @@ html,body{
 }
 
 canvas{
-  /*background-color: rgb(180, 225, 113);*/
   outline: none;
+  background: transparent
 }
 
 #app{
