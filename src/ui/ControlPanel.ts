@@ -1,31 +1,41 @@
 import * as PIXI from 'pixi.js'
 import Button from './Button'
+import Balance from './Balance'
 import type SlotMachine from './SlotMachine'
 
 export default class ControlPanel extends PIXI.Container {
     private container: PIXI.Container
     private button: Button
+    private balance: Balance
 
     constructor (machine: SlotMachine) {
         super()
-        const width = import.meta.env.VITE_APP_WIDTH
-        const height = import.meta.env.VITE_APP_HEIGHT
-        // TODO: Identificar formula
-        const size = (height / 4) / 2
+        const appHeight = import.meta.env.VITE_APP_HEIGHT
+        const appWidth = import.meta.env.VITE_APP_WIDTH
 
         this.container = new PIXI.Container()
         this.addChild(this.container)
 
-        const bottom = new PIXI.Graphics()
-        bottom.beginFill(0, 0)
-        bottom.drawRect(0, height - size, width, size)
+        const marginX = 170
+        const marginY = 43
+
+        const bottom: PIXI.Graphics = new PIXI.Graphics()
+        bottom.beginFill(0x000000)
+        bottom.drawRect(marginX, appHeight - marginY, appWidth - marginX*2, 38)
+        bottom.endFill()
+        bottom.alpha = 0.5;
+
+        this.container.addChild(bottom)
+        this.balance = new Balance()
+        this.balance.position.set(marginX + 10, appHeight - marginY)
+        this.container.addChild(this.balance)
 
         this.button = new Button(machine.startPlay)
-        this.button.x = width - 100
-        this.button.y = height - 70
+        this.button.x = appWidth - 100
+        this.button.y = appHeight - 70
 
-        bottom.addChild(this.button)
-        this.container.addChild(bottom)
+        this.addChild(this.button)
+
     }
 
     getButton = (): Button => {

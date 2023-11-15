@@ -19,7 +19,7 @@ export default class Earnings extends PIXI.Container {
 
         // Add play text
         const style = new PIXI.TextStyle({
-            fontFamily: 'Arial',
+            fontFamily: ['Roboto Slab', 'Helvetica'],
             fontSize: 36,
             fontStyle: 'normal',
             fontWeight: 'bold',
