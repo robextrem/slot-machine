@@ -18,7 +18,7 @@ export default class SlotSymbol extends PIXI.Container {
 
     public async swap (): Promise<void> {
 
-        const n = parseInt(import.meta.env.VITE_APP_NUM_SLOT_SYMBOLS)
+        const n = import.meta.env.VITE_APP_NUM_SLOT_SYMBOLS
 
         this.index = Math.floor(Math.random() * (n > 7 ? 7 : n))
         const sheet = await PIXI.Assets.load('../src/assets/images/spritesheet.json')

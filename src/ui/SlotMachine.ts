@@ -34,12 +34,12 @@ export default class SlotMachine extends PIXI.Container {
     }
 
     public startPlay = (): void => {
-        const duration = parseInt(import.meta.env.VITE_APP_SPIN_DURATION)
-        const delay = parseFloat(import.meta.env.VITE_APP_SPIN_DELAY)
+        const duration = import.meta.env.VITE_APP_SPIN_DURATION
+        const delay = import.meta.env.VITE_APP_SPIN_DELAY
 
         this.reelGroup.getReels().forEach((reel, i) => {
             reel.spin(duration, delay, () => {
-                if(i === parseInt(import.meta.env.VITE_APP_NUM_REELS)-1){
+                if(i === import.meta.env.VITE_APP_NUM_REELS-1){
                     this.panel.getButton().changeState('idle')
                 }
             })
