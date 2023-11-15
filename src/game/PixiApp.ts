@@ -18,21 +18,21 @@ export default class PixiApp extends PIXI.Application{
 
     this.counter = new FpsCounter()
 
-
   }
 
   setStage = ():void => {
     const machine = new SlotMachine(540, 275)
     this.stage.addChild(machine)
 
-    if(import.meta.env.VITE_APP_FPS === "on" && import.meta.env.VITE_APP_ENGINE==="pixi"){
+    if(import.meta.env.VITE_APP_FPS === "on"){
       this.stage.addChild(this.counter)
-
-      this.ticker.add(() => {
-          if(this.counter){
-            this?.counter.setFPS(this.ticker.FPS)
-          }
-      })
+      if(import.meta.env.VITE_APP_ENGINE==="pixi"){
+        this.ticker.add(() => {
+            if(this.counter){
+              this?.counter.setFPS(this.ticker.FPS)
+            }
+        })
+      }
     }
   }
 

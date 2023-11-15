@@ -84,20 +84,21 @@ export default class App {
 
 		this.engine.runRenderLoop(() => {
 
-			if(import.meta.env.VITE_APP_FPS === "on")
+			if(import.meta.env.VITE_APP_FPS === "on"){
 				this.pixiApp.counter.setFPS(this.engine.getFps())
-
-			if (this.engine.webGLVersion === 2) {
-				this.pixiApp.renderer.reset();
 			}
 
-			this.scene.render();
+			if (this.engine.webGLVersion === 2) {
+				this.pixiApp.renderer.reset()
+			}
+
+			this.scene.render()
 			// this.engine.wipeCaches(true);
-			this.pixiApp.render();
+			this.pixiApp.render()
 
 		})
 
-		window.addEventListener("resize", this.resize);
+		window.addEventListener("resize", this.resize)
 		this.resize()
 	}
 }
