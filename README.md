@@ -2,8 +2,6 @@
 
 Simple Slot Machine Development
 
-![alt text](https://github.com/robextrem/slot-machine/blob/main/src/assets/images/screenshot.png?raw=true)
-
 ## Technology Used 🛠️
 
 This project is built using the following technologies:
