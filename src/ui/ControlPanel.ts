@@ -41,4 +41,8 @@ export default class ControlPanel extends PIXI.Container {
     getButton = (): Button => {
         return this.button
     }
+
+    setBalance = (x:number): void => {
+        this.balance.setBalance(x)
+    }
 }

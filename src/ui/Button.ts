@@ -18,6 +18,8 @@ export default class Button extends PIXI.Container {
         this.button.anchor.set(0.5)
         this.button.interactive = true
         this.button.cursor = 'pointer'
+        this.button.height=120
+        this.button.width=120
 
         this.button.on('pointertap', () => {
             if (this.state !== 'pressed') {

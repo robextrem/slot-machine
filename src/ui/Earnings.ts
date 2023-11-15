@@ -1,21 +1,17 @@
 import * as PIXI from 'pixi.js'
-import type SlotMachine from './SlotMachine'
 
 export default class Earnings extends PIXI.Container {
     private container: PIXI.Container
 
-    constructor (machine: SlotMachine) {
+    constructor () {
         super()
 
         this.container = new PIXI.Container()
     
-        const img = PIXI.Sprite.from('../src/assets/images/coin.png');
-        img.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
-
-        img.width = 50
-        img.height = 61
-        img.x=5
-        this.container.addChild(img)
+        const coin = PIXI.Sprite.from('../src/assets/images/coin.png');
+        coin.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
+        coin.x=3
+        this.container.addChild(coin)
 
         // Add play text
         const style = new PIXI.TextStyle({
@@ -37,7 +33,7 @@ export default class Earnings extends PIXI.Container {
         const playText = new PIXI.Text('5000000', style);
     
         playText.x = 68
-        playText.y = 9
+        playText.y = 7
         this.container.addChild(playText)
         this.addChild(this.container)
         this.container.position.set((import.meta.env.VITE_APP_WIDTH - this.container.width)/2, 60)

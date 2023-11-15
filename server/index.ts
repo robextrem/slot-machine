@@ -7,10 +7,13 @@ import { WebSocket, WebSocketServer } from 'ws'
 const port = 3000
 const app = express()
 const server = createServer(app);
-const wss = new WebSocketServer({server:server})
+const wss = new WebSocketServer({server})
 
 const initalBalance = {
-    balance: 1000
+    type: "balance",
+    data: {
+        balance: 1200
+    }
 }
 
 wss.on('connection',(ws:WebSocket)=>{

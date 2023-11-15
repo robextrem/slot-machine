@@ -2,12 +2,14 @@ import * as PIXI from 'pixi.js'
 import ReelGroup from './ReelGroup'
 import ControlPanel from './ControlPanel'
 import Earnings from './Earnings'
+import GameSocket from '../ws/GameSocket'
 
 export default class SlotMachine extends PIXI.Container {
     private reelGroup: ReelGroup
     private panel: ControlPanel
     private earnings: Earnings
     private container: PIXI.Container
+    private gameSocket: GameSocket
 
     constructor (width: number, height: number) {
         super()
@@ -26,16 +28,19 @@ export default class SlotMachine extends PIXI.Container {
         this.reelGroup = new ReelGroup(width, height)
         this.container.addChild(this.reelGroup)
 
-        this.earnings = new Earnings(this)
+        this.earnings = new Earnings()
         this.container.addChild(this.earnings)
 
         this.panel = new ControlPanel(this)
         this.container.addChild(this.panel)
+
+        this.gameSocket = new GameSocket(this)
     }
 
     public startPlay = (): void => {
         const duration = import.meta.env.VITE_APP_SPIN_DURATION
         const delay = import.meta.env.VITE_APP_SPIN_DELAY
+        this.gameSocket.startPlay()
 
         this.reelGroup.getReels().forEach((reel, i) => {
             reel.spin(duration, delay, () => {
@@ -44,5 +49,9 @@ export default class SlotMachine extends PIXI.Container {
                 }
             })
         })
+    }
+
+    getControlPanel = (): ControlPanel => {
+        return this.panel
     }
 }
