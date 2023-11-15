@@ -1,8 +1,19 @@
-import { engine, app } from './game/App'
+import App from './game/App'
+import PixiApp from './game/PixiApp'
 import './assets/sass/styles.scss'
 
-// Ajustar el tamaño del lienzo cuando cambia el tamaño de la ventana
-window.addEventListener('resize', () => {
-  engine.resize()
-  app.renderer.resize(engine.getRenderWidth(), engine.getRenderHeight())
-})
+if(import.meta.env.VITE_APP_ENGINE==='pixi'){
+    const canvas = document.querySelector('#canvas') as HTMLCanvasElement
+
+    const app = new PixiApp(canvas)
+    app.setStage()
+    app.bindDevTools()
+    app.render()
+}else{
+    // eslint-disable-next-line no-new
+    new App()
+}
+
+
+
+

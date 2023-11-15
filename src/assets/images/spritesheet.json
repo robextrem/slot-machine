@@ -27,6 +27,27 @@
             "frame": {"x":288,"y":0,"w":96,"h":96},
             "spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
             "sourceSize": {"w":96,"h":96}
+        },
+        "4":
+        {
+            "image": "./src/assets/images/slot-symbol5.png",
+            "frame": {"x":288,"y":0,"w":96,"h":96},
+            "spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+            "sourceSize": {"w":96,"h":96}
+        },
+        "5":
+        {
+            "image": "./src/assets/images/slot-symbol6.png",
+            "frame": {"x":288,"y":0,"w":96,"h":96},
+            "spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+            "sourceSize": {"w":96,"h":96}
+        },
+        "6":
+        {
+            "image": "./src/assets/images/slot-symbol7.png",
+            "frame": {"x":288,"y":0,"w":96,"h":96},
+            "spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+            "sourceSize": {"w":96,"h":96}
         }
     },
     "meta": {

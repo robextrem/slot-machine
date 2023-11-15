@@ -1,7 +1,7 @@
 {
   "name": "slot-machine",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -24,9 +24,8 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
-    "babylonjs": "^6.28.1",
+    "@babylonjs/core": "^6.29.1",
     "gsap": "^3.12.2",
-    "pixi-fps-counter": "^1.1.1",
     "pixi.js": "^7.3.2"
   }
 }

@@ -5,11 +5,12 @@ export default class Slot extends PIXI.Container {
     private symbol: SlotSymbol
     private container: PIXI.Container
 
-    constructor () {
+    constructor (blockSize:number) {
         super()
-        const blockSize = Math.ceil(parseInt(import.meta.env.VITE_APP_WIDTH) / 5)
 
         this.container = new PIXI.Container()
+        this.container.width=blockSize
+        this.container.height=blockSize
         this.addChild(this.container)
 
         const size = parseInt(import.meta.env.VITE_APP_SLOT_SIZE)
@@ -17,8 +18,8 @@ export default class Slot extends PIXI.Container {
 
         const symbol = new SlotSymbol(size, blockSize)
         const x = margin
-        const y = margin
-        symbol.position.set(x, y - blockSize / 1.25)
+        const y = margin + 8
+        symbol.position.set(x, y - blockSize)
         this.container.addChild(symbol)
         this.symbol = symbol
     }

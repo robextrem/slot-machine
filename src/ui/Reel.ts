@@ -10,32 +10,36 @@ export default class Reel extends PIXI.Container {
     private numberOfSlots: number
     private slots: Slot[]
     private speed: number
-    private isSpeening: boolean
+    public isSpeening: boolean
     private reelWidth: number
+    private reelHeight: number
     private container: PIXI.Container
 
     constructor (width: number, height: number, index: number) {
         super()
         this.index = index
         this.reelWidth = width
+        this.reelHeight = height
         this.numberOfSlots = parseInt(import.meta.env.VITE_APP_NUM_SLOTS)
         this.speed = parseInt(import.meta.env.VITE_APP_REEL_SPEED)
         this.slots = []
         this.isSpeening = false
 
-        const blockSize = parseInt(import.meta.env.VITE_APP_HEIGHT) / (parseInt(import.meta.env.VITE_APP_NUM_SLOTS) + 1)
         const rectMask: PIXI.Graphics = new PIXI.Graphics()
-        rectMask.beginFill('white')
+        rectMask.beginFill('blue')
         rectMask.lineStyle({ color: 0x111111, alpha: 0.87, width: 1 })
-        rectMask.drawRect(width * this.index, -(blockSize / 2), width, height)
+        rectMask.drawRect(width * this.index, 0, width, height)
         rectMask.endFill()
+        console.log("Reel container h: ", height)
 
         this.addChild(rectMask)
         this.container = new PIXI.Container()
+        
+        this.container.mask = rectMask
         this.addChild(this.container)
 
         for (let i = 0; i < this.numberOfSlots + 2; i++) {
-            const slot = new Slot()
+            const slot = new Slot(this.reelWidth)
             this.container.addChild(slot)
             this.slots.push(slot)
         }
@@ -45,10 +49,11 @@ export default class Reel extends PIXI.Container {
 
     public spin = (duration: number, delay: number, cb: () => void): void => {
 
-        const appHeight = parseInt(import.meta.env.VITE_APP_HEIGHT)
-        const blockSize = parseInt(import.meta.env.VITE_APP_HEIGHT) / (parseInt(import.meta.env.VITE_APP_NUM_SLOTS) + 1)
+        if(this.isSpeening)
+          return 
 
-         this.slots.forEach((slot, i) => {
+        const blockSize = parseInt(import.meta.env.VITE_APP_HEIGHT) / (parseInt(import.meta.env.VITE_APP_NUM_SLOTS) + 1)
+        this.slots.forEach((slot) => {
           const lastY = slot.y
           const tween = gsap.timeline({ repeat: 0 });
 
@@ -58,8 +63,8 @@ export default class Reel extends PIXI.Container {
             delay: this.index * delay,
             onUpdate: () => {
               slot.y += 1 * this.speed
-                if (slot.y >= appHeight + blockSize / 2) {
-                  slot.y = - blockSize/2
+                if (slot.y >= this.reelHeight + blockSize) {
+                  slot.y = - blockSize
                   slot.swap().catch(() => {})
                   this.slots.unshift(slot)
                   this.slots.pop()
@@ -81,11 +86,10 @@ export default class Reel extends PIXI.Container {
     }
 
     private initialPosition():void {
-      const blockSize = parseInt(import.meta.env.VITE_APP_HEIGHT) / (parseInt(import.meta.env.VITE_APP_NUM_SLOTS) + 1)
+      const blockSize = Math.ceil(this.reelHeight / (parseInt(import.meta.env.VITE_APP_NUM_SLOTS)))
       this.slots.forEach((slot, i) => {
         slot.position.x = this.reelWidth * this.index
         slot.position.y = i * blockSize
       })
     }
-
 }
