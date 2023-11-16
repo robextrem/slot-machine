@@ -5,6 +5,7 @@ export default class ReelGroup extends PIXI.Container {
     private numberOfReels: number
     private reels: Reel[]
     private container: PIXI.Container
+    private symbols = [] as number[]
 
     constructor (width: number, height: number) {
         super()
@@ -16,7 +17,7 @@ export default class ReelGroup extends PIXI.Container {
         const img = PIXI.Sprite.from('../src/assets/images/board.png');
         img.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
 
-        img.width = 767
+        img.width = 767 
         img.height = 447
         img.anchor.set(0.5)
         img.position.set(import.meta.env.VITE_APP_WIDTH / 2 , import.meta.env.VITE_APP_HEIGHT / 2)
@@ -30,7 +31,6 @@ export default class ReelGroup extends PIXI.Container {
 
         for (let i = 0; i < this.numberOfReels; i++) {
             const reel = new Reel(Math.floor(width / 5), height, i)
-            // reel.position.set(0, 0)
             this.container.addChild(reel)
             this.reels.push(reel)
         }
@@ -38,5 +38,10 @@ export default class ReelGroup extends PIXI.Container {
 
     getReels = (): Reel[] => {
         return this.reels
+    }
+
+    setSymbols = (symbols:number[]):void =>{
+        this.symbols = symbols
+        console.log(symbols)
     }
 }

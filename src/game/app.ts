@@ -1,3 +1,5 @@
+import * as PIXI from "pixi.js"
+import PixiApp from "./PixiApp.ts"
 import { Engine } from "@babylonjs/core/Engines/engine"
 import { Vector3 } from "@babylonjs/core/Maths/math"
 import { Color4 } from "@babylonjs/core/Maths/math.color"
@@ -6,9 +8,6 @@ import { UniversalCamera } from "@babylonjs/core/Cameras/universalCamera"
 import "@babylonjs/core/Loading/loadingScreen"
 import "@babylonjs/core/Audio/audioSceneComponent"
 import "@babylonjs/core/Materials/standardMaterial"
-
-import * as PIXI from "pixi.js"
-import PixiApp from "./PixiApp.ts"
 
 export default class App {
 	private canvas: HTMLCanvasElement

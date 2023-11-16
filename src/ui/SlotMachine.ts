@@ -37,11 +37,17 @@ export default class SlotMachine extends PIXI.Container {
         this.gameSocket = new GameSocket(this)
     }
 
-    public startPlay = (): void => {
+    startPlay = (): void => {
+        if(import.meta.env.VITE_APP_USE_WEB_SOCKET === 'on'){
+            this.gameSocket.requestSymbols()
+        }else{
+            this.startSpin()
+        }
+    }
+
+    startSpin = (): void => {
         const duration = import.meta.env.VITE_APP_SPIN_DURATION
         const delay = import.meta.env.VITE_APP_SPIN_DELAY
-        this.gameSocket.startPlay()
-
         this.reelGroup.getReels().forEach((reel, i) => {
             reel.spin(duration, delay, () => {
                 if(i === import.meta.env.VITE_APP_NUM_REELS-1){
@@ -53,5 +59,9 @@ export default class SlotMachine extends PIXI.Container {
 
     getControlPanel = (): ControlPanel => {
         return this.panel
+    }
+
+    getReelGroup = (): ReelGroup => {
+        return this.reelGroup
     }
 }

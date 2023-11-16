@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 import SlotMachine from '../ui/SlotMachine'
 import FpsCounter from '../ui/FpsCounter'
+import Credits from '../ui/Credits'
 
 export default class PixiApp extends PIXI.Application{
   public counter: FpsCounter
@@ -22,7 +23,7 @@ export default class PixiApp extends PIXI.Application{
   setStage = ():void => {
     const machine = new SlotMachine(540, 275)
     this.stage.addChild(machine)
-
+    // this.stage.addChild(new Credits())
     if(import.meta.env.VITE_APP_FPS === "on"){
       this.stage.addChild(this.counter)
       if(import.meta.env.VITE_APP_ENGINE==="pixi"){

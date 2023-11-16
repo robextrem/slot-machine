@@ -24,8 +24,8 @@ export default class Slot extends PIXI.Container {
         this.symbol = symbol
     }
 
-    public async swap (): Promise<void> {
-        await this.symbol.swap()
+    public swap (): void {
+        this.symbol.swap()
     }
 
 }

@@ -16,13 +16,22 @@ export default class GameSocket{
             switch(json.type){
                 case 'balance':{
                     slotMachine.getControlPanel().setBalance(json.data.balance)
+                    break;
+                }
+                case 'symbols':{
+                    slotMachine.getReelGroup().setSymbols(json.data.symbols)
+                    slotMachine.startSpin()
                 }
             }
         })
+
+        this.socket.addEventListener("error", (event) => {
+            console.log("WebSocket error: ", event)
+        })
     }
 
-    startPlay = ():void => {
-        this.socket.send('New spin detected '+ Date.now())
+    requestSymbols = ():void => {
+        this.socket.send('symbols')
     }
 
 }

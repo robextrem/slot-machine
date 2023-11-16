@@ -65,7 +65,7 @@ export default class Reel extends PIXI.Container {
               slot.y += 1 * this.speed
                 if (slot.y >= this.reelHeight + blockSize) {
                   slot.y = - blockSize
-                  slot.swap().catch(() => {})
+                  slot.swap()
                   this.slots.unshift(slot)
                   this.slots.pop()
                 }
