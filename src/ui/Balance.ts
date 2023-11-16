@@ -9,7 +9,6 @@ export default class Balance extends PIXI.Container {
         super()
         this.container = new PIXI.Container()
 
-        // Add play text
         const style = new PIXI.TextStyle({
             fontFamily: ['Roboto Slab', 'Helvetica'],
             fontSize: 20,

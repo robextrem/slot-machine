@@ -17,7 +17,6 @@ export default class PixiApp extends PIXI.Application{
     })
 
     this.counter = new FpsCounter()
-
   }
 
   setStage = ():void => {
@@ -40,5 +39,4 @@ export default class PixiApp extends PIXI.Application{
       /* @ts-expect-error */
       globalThis.__PIXI_APP__ = this
   }
-
 }

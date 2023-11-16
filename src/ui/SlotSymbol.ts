@@ -3,7 +3,7 @@ import * as PIXI from 'pixi.js'
 export default class SlotSymbol extends PIXI.Container {
     private index: number
     private sprite: PIXI.Sprite
-    private sheet: PIXI.Assets
+    private sheet: any
 
     constructor (size: number, maxWidth: number) {
         super()
@@ -27,7 +27,6 @@ export default class SlotSymbol extends PIXI.Container {
         this.index = Math.floor(Math.random() * (n > 7 ? 7 : n))
         this.sprite.texture = PIXI.Texture.from(this.sheet.data.frames[`${this.index}`].image)
         this.sprite.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.LINEAR
-
     }
 
 }
