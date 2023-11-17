@@ -1,12 +1,14 @@
 import * as PIXI from 'pixi.js'
 import ReelGroup from './ReelGroup'
-import ControlPanel from '../panel/ControlPanel'
+import ControlPanel from '../control-panel/ControlPanel'
+import CheatPanel from '../cheat-panel/CheatPanel'
 import Earnings from './Earnings'
 import GameSocket from '../../ws/GameSocket'
 
 export default class SlotMachine extends PIXI.Container {
     private reelGroup: ReelGroup
     private panel: ControlPanel
+    private cheatPanel: CheatPanel
     private earnings: Earnings
     private container: PIXI.Container
     private gameSocket: GameSocket
@@ -33,6 +35,9 @@ export default class SlotMachine extends PIXI.Container {
 
         this.panel = new ControlPanel(this)
         this.container.addChild(this.panel)
+
+        this.cheatPanel = new CheatPanel(this)
+        this.container.addChild(this.cheatPanel)
 
         this.gameSocket = new GameSocket(this)
     }

@@ -16,7 +16,7 @@ export default class MainButton extends PIXI.Container {
 
         this.button = new PIXI.Sprite(this.idleState)
         this.button.anchor.set(0.5)
-        this.button.interactive = true
+        this.button.eventMode = 'static'
         this.button.cursor = 'pointer'
         this.button.height=120
         this.button.width=120
@@ -42,8 +42,7 @@ export default class MainButton extends PIXI.Container {
         this.addChild(this.button)
     }
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    changeState = (state: string, cb: Function = () => {}): void => {
+    changeState = (state: string, cb: () => void = () => {}): void => {
         switch (state) {
             case 'pressed':{
                 this.button.texture = this.pressedState

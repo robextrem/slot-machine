@@ -3,7 +3,6 @@ const generatePaylines = ():any => {
     const y = Number(process.env.VITE_APP_NUM_REELS) || 5
     const n = Number(process.env.VITE_APP_NUM_SLOT_SYMBOLS) || 5
   
-
     return {
         type: 'symbols',
         data:  {
