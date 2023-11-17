@@ -16,14 +16,14 @@ export default class ControlPanel extends PIXI.Container {
         this.container = new PIXI.Container()
         this.addChild(this.container)
 
-        const marginX = 170
-        const marginY = 43
+        const marginX = 0
+        const marginY = 38
 
         const bottom: PIXI.Graphics = new PIXI.Graphics()
         bottom.beginFill(0x000000)
         bottom.drawRect(marginX, appHeight - marginY, appWidth - marginX*2, 38)
         bottom.endFill()
-        bottom.alpha = 0.5;
+        bottom.alpha = 0.5
 
         this.container.addChild(bottom)
         this.balance = new Balance()

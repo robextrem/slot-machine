@@ -11,14 +11,14 @@ export default class FpsCounter extends PIXI.Container {
             fontStyle: 'normal',
             fontWeight: 'bold',
             fill: '#ffffff'
-        });
+        })
     
         this.playText = new PIXI.Text('FPS: 100', style)
-        this.playText.position.set(10,10)
+        this.playText.position.set(10, 10)
         this.addChild(this.playText)
     }
 
-    setFPS=(fps:number):void=>{
+    setFPS = (fps:number):void=>{
         this.playText.text = `FPS: ${fps.toFixed()}`
     }
 

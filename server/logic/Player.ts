@@ -1,6 +1,6 @@
 const generateBalance = ():any => {
     return {
-        type: "balance",
+        type: 'balance',
         data: {
             balance: 1200
         }

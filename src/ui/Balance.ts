@@ -23,9 +23,9 @@ export default class Balance extends PIXI.Container {
             dropShadowAngle: Math.PI / 2,
             dropShadowDistance: 2,
             wordWrap: true
-        });
+        })
     
-        this.label = new PIXI.Text('Balance', style);
+        this.label = new PIXI.Text('Balance', style)
         this.label.y+=4
     
         this.container.addChild(this.label)
@@ -44,9 +44,9 @@ export default class Balance extends PIXI.Container {
             dropShadowAngle: Math.PI / 6,
             dropShadowDistance: 4,
             wordWrap: true
-        });
+        })
 
-        this.balanceText = new PIXI.Text('0', style2);
+        this.balanceText = new PIXI.Text('0', style2)
         this.balanceText.x=90
         this.container.addChild(this.balanceText)
 

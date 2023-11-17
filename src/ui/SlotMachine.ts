@@ -14,7 +14,7 @@ export default class SlotMachine extends PIXI.Container {
     constructor (width: number, height: number) {
         super()
 
-        const img = PIXI.Sprite.from('../src/assets/images/bg.png');
+        const img = PIXI.Sprite.from('assets/images/bg.png')
         img.width = import.meta.env.VITE_APP_WIDTH
         img.height = import.meta.env.VITE_APP_HEIGHT
         img.anchor.set(0.5)
@@ -48,9 +48,10 @@ export default class SlotMachine extends PIXI.Container {
     startSpin = (): void => {
         const duration = import.meta.env.VITE_APP_SPIN_DURATION
         const delay = import.meta.env.VITE_APP_SPIN_DELAY
-        this.reelGroup.getReels().forEach((reel, i) => {
+        const reels = this.reelGroup.getReels()
+        reels.forEach((reel, i) => {
             reel.spin(duration, delay, () => {
-                if(i === import.meta.env.VITE_APP_NUM_REELS-1){
+                if(i === import.meta.env.VITE_APP_NUM_REELS - 1){
                     this.panel.getButton().changeState('idle')
                 }
             })

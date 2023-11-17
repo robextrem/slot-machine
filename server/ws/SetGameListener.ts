@@ -4,7 +4,7 @@ import messageHandler from './MessageHandler.ts'
 
 const setGameListener = (ws:WebSocket):void => {
 
-    console.log("New client connected")
+    console.log('New client connected')
 
     const initalBalance = JSON.stringify(generateBalance())    
     ws.send(initalBalance)
