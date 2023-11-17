@@ -21,7 +21,7 @@ export default class Reel extends PIXI.Container {
         this.index = index
         this.reelWidth = width
         this.reelHeight = height
-        this.numberOfSlots = import.meta.env.VITE_APP_NUM_SLOTS
+        this.numberOfSlots = Number(import.meta.env.VITE_APP_NUM_SLOTS)
         this.speed = Number(import.meta.env.VITE_APP_REEL_SPEED) || 1
         this.slots = []
         this.symbols = []
@@ -64,8 +64,8 @@ export default class Reel extends PIXI.Container {
             delay: this.index * delay,
             onUpdate: () => {
               slot.y += pixel * this.speed
-              if (slot.y > this.reelHeight + blockSize) {
-                slot.y = this.container.y - blockSize/2 + this.speed
+              if (slot.y >= this.container.height) {
+                slot.y = this.container.y - blockSize
                 slot.swap(tween.totalTime() >= duration - 1 ? this.symbols[slot.index] : null)
                 this.slots.unshift(slot)
                 this.slots.pop()

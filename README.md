@@ -21,7 +21,7 @@ To run the project, you will need to have Node.js and Yarn installed on your mac
 2. Open a terminal and navigate to the root directory of the project.
 3. Run `pnpm install` to install all of the project's dependencies.
 4. Run `pnpm dev` to start the development server.
-5. The project should now be running at `http://localhost:5173`.
+5. The project should now be running at `http://localhost:8080`.
 
 ## Environment Variables 📝
 

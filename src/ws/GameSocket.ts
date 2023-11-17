@@ -1,4 +1,4 @@
-import type SlotMachine from '../ui/SlotMachine'
+import type SlotMachine from '../ui/slot-machine/SlotMachine'
 
 export default class GameSocket{
     private socket: WebSocket
@@ -15,7 +15,7 @@ export default class GameSocket{
             const json = JSON.parse(event.data)
             switch(json.type){
                 case 'balance':{
-                    slotMachine.getControlPanel().setBalance(json.data.balance)
+                    slotMachine.getControlPanel().getPanelData().setBalance(json.data.balance)
                     break
                 }
                 case 'symbols':{

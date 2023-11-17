@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js'
-import SlotMachine from '../ui/SlotMachine'
+import SlotMachine from '../ui/slot-machine/SlotMachine'
 import FpsCounter from '../ui/FpsCounter'
 
 export default class PixiApp extends PIXI.Application{
