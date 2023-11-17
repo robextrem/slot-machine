@@ -1,14 +1,13 @@
-import { Engine } from "@babylonjs/core/Engines/engine"
-import { Vector3 } from "@babylonjs/core/Maths/math"
-import { Color4 } from "@babylonjs/core/Maths/math.color"
-import { Scene } from "@babylonjs/core/scene"
-import { UniversalCamera } from "@babylonjs/core/Cameras/universalCamera"
-import "@babylonjs/core/Loading/loadingScreen"
-import "@babylonjs/core/Audio/audioSceneComponent"
-import "@babylonjs/core/Materials/standardMaterial"
-
-import * as PIXI from "pixi.js"
-import PixiApp from "./PixiApp.ts"
+import * as PIXI from 'pixi.js'
+import PixiApp from './PixiApp.ts'
+import { Engine } from '@babylonjs/core/Engines/engine'
+import { Vector3 } from '@babylonjs/core/Maths/math'
+import { Color4 } from '@babylonjs/core/Maths/math.color'
+import { Scene } from '@babylonjs/core/scene'
+import { UniversalCamera } from '@babylonjs/core/Cameras/universalCamera'
+import '@babylonjs/core/Loading/loadingScreen'
+import '@babylonjs/core/Audio/audioSceneComponent'
+import '@babylonjs/core/Materials/standardMaterial'
 
 export default class App {
 	private canvas: HTMLCanvasElement
@@ -26,7 +25,7 @@ export default class App {
 		const renderingCanvas = this.engine.getRenderingCanvas()
 		
 		if (!renderingCanvas) 
-			throw new Error("Can't find the rendering canvas")
+			throw new Error('No rendering canvas found')
 
 		this.pixiApp.renderer = new PIXI.Renderer({
 			context: this.engine._gl,
@@ -56,7 +55,7 @@ export default class App {
 
 		this.scene.detachControl()
 		const camera = new UniversalCamera(
-			"MainCamera",
+			'MainCamera',
 			new Vector3(0, 0, -10),
 			scene,
 		)
@@ -80,11 +79,11 @@ export default class App {
 	}
 
 	private async main():Promise<void> {
-		await this.goToStart();
+		await this.goToStart()
 
 		this.engine.runRenderLoop(() => {
 
-			if(import.meta.env.VITE_APP_FPS === "on"){
+			if(import.meta.env.VITE_APP_FPS === 'on'){
 				this.pixiApp.counter.setFPS(this.engine.getFps())
 			}
 
@@ -98,7 +97,7 @@ export default class App {
 
 		})
 
-		window.addEventListener("resize", this.resize)
+		window.addEventListener('resize', this.resize)
 		this.resize()
 	}
 }

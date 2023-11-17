@@ -5,19 +5,21 @@ export default class Button extends PIXI.Container {
     private hoverState: PIXI.Texture
     private pressedState: PIXI.Texture
     private button: PIXI.Sprite
-    public state: string
+    private state: string
 
     constructor (cb: any) {
         super()
         this.state = 'idle'
-        this.idleState = PIXI.Texture.from('../src/assets/images/button-idle.png')
-        this.hoverState = PIXI.Texture.from('../src/assets/images/button-hover.png')
-        this.pressedState = PIXI.Texture.from('../src/assets/images/button-pressed.png')
+        this.idleState = PIXI.Texture.from('assets/images/button-idle.png')
+        this.hoverState = PIXI.Texture.from('assets/images/button-hover.png')
+        this.pressedState = PIXI.Texture.from('assets/images/button-pressed.png')
 
         this.button = new PIXI.Sprite(this.idleState)
         this.button.anchor.set(0.5)
         this.button.interactive = true
         this.button.cursor = 'pointer'
+        this.button.height=120
+        this.button.width=120
 
         this.button.on('pointertap', () => {
             if (this.state !== 'pressed') {

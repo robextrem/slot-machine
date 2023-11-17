@@ -28,6 +28,9 @@ module.exports = {
         "@typescript-eslint/indent": "off",
         "@typescript-eslint/prefer-readonly": "off",
         "@typescript-eslint/strict-boolean-expressions": "off",
-        "@typescript-eslint/ban-ts-comment": "off"
+        "@typescript-eslint/ban-ts-comment": "off",
+        "spaced-comment": ['error', 'always', { 'markers': ['/'] }],
+        "quotes": [2, 'single', { 'avoidEscape': true }],
+        "semi": [2, 'never']
     }
 }

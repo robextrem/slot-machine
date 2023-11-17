@@ -9,6 +9,8 @@ if(import.meta.env.VITE_APP_ENGINE==='pixi'){
     app.setStage()
     app.bindDevTools()
     app.render()
+    window.onresize = app.resize
+
 }else{
     // eslint-disable-next-line no-new
     new App()

@@ -3,7 +3,10 @@
 interface ImportMetaEnv {
     readonly VITE_APP_VERSION: string,
     readonly VITE_APP_ENGINE: string,
+    readonly VITE_APP_BACKEND_URL: string,
     readonly VITE_APP_FPS: string,
+    readonly VITE_APP_USE_WEB_SOCKET: string,
+    readonly VITE_APP_BACKEND_URL: string,
     readonly VITE_APP_NUM_REELS: number,
     readonly VITE_APP_NUM_SLOTS: number,
     readonly VITE_APP_NUM_SLOT_SYMBOLS: number,

@@ -2,20 +2,20 @@ import * as PIXI from 'pixi.js'
 
 export default class Balance extends PIXI.Container {
     private container: PIXI.Container
-    private label: string = 'Balance'
+    private label: PIXI.Text
+    private balanceText: PIXI.Text
 
     constructor () {
         super()
         this.container = new PIXI.Container()
 
-        // Add play text
         const style = new PIXI.TextStyle({
             fontFamily: ['Roboto Slab', 'Helvetica'],
             fontSize: 20,
             fontStyle: 'normal',
             fontWeight: 'bold',
             fill: ['#D1CFCF', '#D8D1CD'], // gradient
-            stroke: '#7F7870',
+            stroke: '#222222',
             strokeThickness: 2,
             dropShadow: true,
             dropShadowColor: '#111111',
@@ -23,17 +23,16 @@ export default class Balance extends PIXI.Container {
             dropShadowAngle: Math.PI / 2,
             dropShadowDistance: 2,
             wordWrap: true
-        });
+        })
     
-        const playText = new PIXI.Text(this.label, style);
-        playText.y+=4
+        this.label = new PIXI.Text('Balance', style)
+        this.label.y+=4
     
-        this.container.addChild(playText)
-
+        this.container.addChild(this.label)
 
         const style2 = new PIXI.TextStyle({
             fontFamily: ['Roboto Slab', 'Helvetica'],
-            fontSize: 28,
+            fontSize: 26,
             fontStyle: 'normal',
             fontWeight: 'bold',
             fill: ['#B06830', '#FEDF6C'], // gradient
@@ -45,13 +44,17 @@ export default class Balance extends PIXI.Container {
             dropShadowAngle: Math.PI / 6,
             dropShadowDistance: 4,
             wordWrap: true
-        });
+        })
 
-        const playText2 = new PIXI.Text('50000', style2);
-        playText2.x=90
-        this.container.addChild(playText2)
+        this.balanceText = new PIXI.Text('0', style2)
+        this.balanceText.x=90
+        this.container.addChild(this.balanceText)
 
         this.addChild(this.container)
+    }
+
+    setBalance = (x:number): void => {
+        this.balanceText.text = x
     }
 
 }
