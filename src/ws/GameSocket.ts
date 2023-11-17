@@ -1,4 +1,4 @@
-import type SlotMachine from '../ui/SlotMachine'
+import type SlotMachine from '../ui/slot-machine/SlotMachine'
 
 export default class GameSocket{
     private socket: WebSocket

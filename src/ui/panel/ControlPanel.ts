@@ -1,11 +1,13 @@
 import * as PIXI from 'pixi.js'
-import Button from './Button'
+import MainButton from './MainButton'
 import Balance from './Balance'
-import type SlotMachine from './SlotMachine'
+import Bet from './Bet'
+import type SlotMachine from '../slot-machine/SlotMachine'
 
 export default class ControlPanel extends PIXI.Container {
     private container: PIXI.Container
-    private button: Button
+    private button: MainButton
+    private bet: Bet
     private balance: Balance
 
     constructor (machine: SlotMachine) {
@@ -30,7 +32,11 @@ export default class ControlPanel extends PIXI.Container {
         this.balance.position.set(marginX + 10, appHeight - marginY)
         this.container.addChild(this.balance)
 
-        this.button = new Button(machine.startPlay)
+        this.bet = new Bet()
+        this.bet.position.set(marginX + 200, appHeight - marginY)
+        this.container.addChild(this.bet)
+
+        this.button = new MainButton(machine.startPlay)
         this.button.x = appWidth - 100
         this.button.y = appHeight - 70
 
@@ -38,7 +44,7 @@ export default class ControlPanel extends PIXI.Container {
 
     }
 
-    getButton = (): Button => {
+    getButton = (): MainButton => {
         return this.button
     }
 

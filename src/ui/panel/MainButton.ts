@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 
-export default class Button extends PIXI.Container {
+export default class MainButton extends PIXI.Container {
     private idleState: PIXI.Texture
     private hoverState: PIXI.Texture
     private pressedState: PIXI.Texture

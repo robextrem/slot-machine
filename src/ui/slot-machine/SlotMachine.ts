@@ -1,8 +1,8 @@
 import * as PIXI from 'pixi.js'
 import ReelGroup from './ReelGroup'
-import ControlPanel from './ControlPanel'
+import ControlPanel from '../panel/ControlPanel'
 import Earnings from './Earnings'
-import GameSocket from '../ws/GameSocket'
+import GameSocket from '../../ws/GameSocket'
 
 export default class SlotMachine extends PIXI.Container {
     private reelGroup: ReelGroup
