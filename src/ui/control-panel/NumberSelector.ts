@@ -22,14 +22,15 @@ export default class NumberSelector extends PIXI.Container {
         const bet = new PIXI.Graphics()
 
         bet.beginFill(0xB81E0C,0.5)
-        bet.drawRect(0,0,110,40)
+        bet.drawRect(0, 0, 110, 40)
         bet.endFill()
 
         this.betText = new PIXI.Text('100', goldenStyle)
         bet.x = this.minusButton.position.x + this.minusButton.width / 2 + 5
         bet.addChild(this.betText)
 
-        this.betText.x+=5
+        this.betText.anchor.set(0.5, 0)
+        this.betText.position.set(55,0)
 
         this.container.addChild(bet)
 

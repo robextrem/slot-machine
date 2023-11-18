@@ -38,8 +38,8 @@ For streamlined testing and iteration, set predefined default values for the gam
 | `VITE_APP_REEL_SPEED` | `number` | Speed of the reel | number        |
 | `VITE_APP_SPIN_DURATION` | `number` | How long each spin lasts in seconds | number        |
 | `VITE_APP_SPIN_DELAY` | `number` | Delay Between Reels Spin in seconds | number        |
-| `VITE_APP_WIDTH` | `number` | Canvas width (experimental) | number        |
-| `VITE_APP_HEIGHT` | `number` | Canvas height (experimental) | number        |
+| `VITE_APP_WIDTH` | `number` | Canvas width | number        |
+| `VITE_APP_HEIGHT` | `number` | Canvas height | number        |
 
 ## Deployment
 

@@ -26,7 +26,8 @@ export default class ReelGroup extends PIXI.Container {
         this.container = new PIXI.Container()
         this.container.height = height
         this.container.width = width
-        this.container.position.set((appWidth - width) / 2, 180)
+        this.container.position.set((appWidth - width) / 2, (import.meta.env.VITE_APP_HEIGHT / 2 )  - 90)
+
         this.addChild(this.container)
 
         for (let i = 0; i < this.numberOfReels; i++) {

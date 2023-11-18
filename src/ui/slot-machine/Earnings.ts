@@ -19,7 +19,8 @@ export default class Earnings extends PIXI.Container {
         playText.x = coin.width + 50
         this.container.addChild(playText)
         this.addChild(this.container)
-        this.container.position.set((import.meta.env.VITE_APP_WIDTH - this.container.width)/2, 62)
+        this.container.position.set((import.meta.env.VITE_APP_WIDTH - this.container.width)/2, (import.meta.env.VITE_APP_HEIGHT / 2) - 210)
+
     }
 
 }

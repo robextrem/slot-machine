@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
-import { gsap } from 'gsap'
-import { PixiPlugin } from 'gsap/PixiPlugin'
 import Slot from './Slot'
+import { PixiPlugin } from 'gsap/PixiPlugin'
+import { gsap } from 'gsap'
 gsap.registerPlugin(PixiPlugin)
 PixiPlugin.registerPIXI(PIXI)
 

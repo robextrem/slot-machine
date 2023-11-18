@@ -1,5 +1,9 @@
 import * as PIXI from 'pixi.js'
 import { labelTextStyle, goldenTextStyle } from '../../helpers/textStyles'
+import { PixiPlugin } from 'gsap/PixiPlugin'
+import { gsap } from 'gsap'
+gsap.registerPlugin(PixiPlugin)
+PixiPlugin.registerPIXI(PIXI)
 
 export default class InfoBlock extends PIXI.Container {
     private container: PIXI.Container
@@ -31,8 +35,23 @@ export default class InfoBlock extends PIXI.Container {
         this.addChild(this.container)
     }
 
-    setBalance = (x:number): void => {
-        this.valueText.text = x
+
+    setValue = (x:number, animated:boolean = false): void => {
+
+        if(animated){
+            const tween = gsap.to(this,{ 
+                roundProps: 'end',
+                duration:0.5,
+                end: x,
+                onUpdate: () => {
+                    this.valueText.text = Math.ceil(tween.targets()[0].end)
+                },
+            })
+        }else{
+            this.valueText.text = x
+        }
+
+
     }
 
 }

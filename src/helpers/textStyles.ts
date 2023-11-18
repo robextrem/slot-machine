@@ -5,7 +5,7 @@ const labelTextStyle: Partial<PIXI.ITextStyle> = {
     fontSize: 18,
     fontStyle: 'normal',
     fontWeight: 'bold',
-    fill: ['#D1CFCF', '#D8D1CD'], // gradient
+    fill: ['#D1CFCF', '#D8D1CD'],
     stroke: '#222222',
     strokeThickness: 2,
     dropShadow: true,
@@ -21,7 +21,7 @@ const goldenTextStyle: Partial<PIXI.ITextStyle> = {
     fontSize: 25,
     fontStyle: 'normal',
     fontWeight: 'bold',
-    fill: ['#B06830', '#FEDF6C'], // gradient
+    fill: ['#B06830', '#FEDF6C'],
     stroke: '#FDD16B',
     strokeThickness: 1.8,
     dropShadow: true,
@@ -38,7 +38,7 @@ const goldenBigTextStyle: Partial<PIXI.ITextStyle> = {
     fontSize: 40,
     fontStyle: 'normal',
     fontWeight: 'bold',
-    fill: ['#B06830', '#FEDF6C'], // gradient
+    fill: ['#B06830', '#FEDF6C'],
     stroke: '#FDD16B',
     strokeThickness: 3,
     dropShadow: true,
@@ -55,10 +55,21 @@ const lightTextStyle: Partial<PIXI.ITextStyle> = {
     fontSize: 22,
     fontStyle: 'normal',
     fontWeight: 'bold',
-    fill: ['#c1c6d3', '#aecae9'], // gradient
+    fill: ['#c1c6d3', '#aecae9'],
     stroke: '#000',
     strokeThickness: 1,
     wordWrap: false
 }
 
-export { labelTextStyle, goldenTextStyle, goldenBigTextStyle, lightTextStyle }
+const dropdownTextStyle: Partial<PIXI.ITextStyle> = {
+    fontFamily: ['Roboto Slab', 'Helvetica'],
+    fontSize: 14,
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fill: ['#D1CFCF', '#D8D1CD'],
+    stroke: '#000',
+    strokeThickness: 1,
+    wordWrap: true
+}
+
+export { labelTextStyle, goldenTextStyle, goldenBigTextStyle, lightTextStyle, dropdownTextStyle }
