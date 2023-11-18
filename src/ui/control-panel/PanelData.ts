@@ -18,7 +18,7 @@ export default class PanelData extends PIXI.Container {
         this.container = new PIXI.Container()
         this.addChild(this.container)
 
-        this.balance = new InfoBlock('Balance','')
+        this.balance = new InfoBlock('Balance','0')
         this.balance.position.set(width * 0 + margin, 0)
         this.container.addChild(this.balance)
 
@@ -36,7 +36,7 @@ export default class PanelData extends PIXI.Container {
 
     }
 
-    setBalance = (x:number): void => {
-        this.balance.setBalance(x)
+    getBalance = (): InfoBlock => {
+        return this.balance
     }
 }

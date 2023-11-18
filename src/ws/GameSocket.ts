@@ -15,7 +15,7 @@ export default class GameSocket{
             const json = JSON.parse(event.data)
             switch(json.type){
                 case 'balance':{
-                    slotMachine.getControlPanel().getPanelData().setBalance(json.data.balance)
+                    slotMachine.getControlPanel().getPanelData().getBalance().setValue(json.data.balance, true)
                     break
                 }
                 case 'symbols':{
