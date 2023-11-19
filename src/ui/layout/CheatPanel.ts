@@ -1,17 +1,17 @@
 import * as PIXI from 'pixi.js'
 import type SlotMachine from '../slot-machine/SlotMachine'
-import Dropdown from '../utilities/DropDown'
+import Dropdown from '../utilities/Dropdown'
 
 export default class CheatPanel extends PIXI.Container {
     private button:PIXI.Sprite
     private dropdown:Dropdown
     private container: PIXI.Container
-    constructor (machine: SlotMachine) {
+    constructor (_machine: SlotMachine) {
         super()
 
         this.container = new PIXI.Container()
         this.button = PIXI.Sprite.from('../src/assets/images/question.png')
-        this.button.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST
+        this.button.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.LINEAR
         this.button.width = 55
         this.button.height = 46
         this.button.eventMode = 'static'
