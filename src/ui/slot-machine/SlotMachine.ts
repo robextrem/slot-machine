@@ -3,6 +3,7 @@ import ReelGroup from './ReelGroup'
 import ControlPanel from '../control-panel/ControlPanel'
 import CheatPanel from '../cheat-panel/CheatPanel'
 import Earnings from './Earnings'
+import FpsCounter from '../../game/FpsCounter'
 import GameSocket from '../../ws/GameSocket'
 
 export default class SlotMachine extends PIXI.Container {
@@ -40,10 +41,19 @@ export default class SlotMachine extends PIXI.Container {
         this.container.addChild(this.cheatPanel)
 
         this.gameSocket = new GameSocket(this)
+
+        if(import.meta.env.VITE_APP_FPS === 'on'){
+            this.addFPS()
+        }
+
+        if(import.meta.env.VITE_APP_USE_WEB_SOCKET === 'on' && !this.gameSocket.isClosed()){
+            this.gameSocket.init()
+        }
+
     }
 
     startPlay = (): void => {
-        if(import.meta.env.VITE_APP_USE_WEB_SOCKET === 'on'){
+        if(import.meta.env.VITE_APP_USE_WEB_SOCKET === 'on' && !this.gameSocket.isClosed()){
             this.gameSocket.requestSymbols()
         }else{
             this.startSpin()
@@ -61,6 +71,11 @@ export default class SlotMachine extends PIXI.Container {
                 }
             })
         })
+    }
+
+    addFPS = ():void => {
+        const counter = new FpsCounter()
+        this.addChild(counter)
     }
 
     getControlPanel = (): ControlPanel => {

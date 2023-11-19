@@ -11,7 +11,7 @@ export default class CheatPanel extends PIXI.Container {
 
         this.container = new PIXI.Container()
         this.button = PIXI.Sprite.from('../src/assets/images/question.png')
-        this.button.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.LINEAR
+        this.button.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST
         this.button.width = 55
         this.button.height = 46
         this.button.eventMode = 'static'
