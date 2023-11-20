@@ -11,7 +11,7 @@ export default class Reel extends PIXI.Container {
     private slots: Slot[]
     private symbols: number[]
     private speed: number
-    public isSpeening: boolean
+    public isSpinning: boolean
     private reelWidth: number
     private reelHeight: number
     private container: PIXI.Container
@@ -25,7 +25,7 @@ export default class Reel extends PIXI.Container {
         this.speed = Number(import.meta.env.VITE_APP_REEL_SPEED) || 1
         this.slots = []
         this.symbols = []
-        this.isSpeening = false
+        this.isSpinning = false
 
         const rectMask: PIXI.Graphics = new PIXI.Graphics()
         rectMask.beginFill('blue')
@@ -49,7 +49,7 @@ export default class Reel extends PIXI.Container {
 
     public spin = (duration: number, delay: number, cb: () => void): void => {
 
-        if(this.isSpeening)
+        if(this.isSpinning)
           return 
 
         const blockSize = import.meta.env.VITE_APP_HEIGHT / (import.meta.env.VITE_APP_NUM_SLOTS + 1)
@@ -78,7 +78,7 @@ export default class Reel extends PIXI.Container {
             ease: 'elastic.out',
             onComplete: () => {
               cb()
-              this.isSpeening=false
+              this.isSpinning=false
             }
           }).to(this, {
             pixi: {blurY: 0, duration: 0}

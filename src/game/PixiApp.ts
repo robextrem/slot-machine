@@ -8,7 +8,7 @@ export default class PixiApp extends PIXI.Application{
     
     super({
       view: canvas,
-      background: '#1099bb',
+      background: '#000000',
       height: appHeight,
       width: appWidth,
       resolution: window.devicePixelRatio || 1,
