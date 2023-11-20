@@ -16,7 +16,7 @@ export default class Earnings extends PIXI.Container {
         const style = new PIXI.TextStyle(goldenBigTextStyle)
         const playText = new PIXI.Text('50000', style)
     
-        playText.x = coin.width + 50
+        playText.x = 55
         this.container.addChild(playText)
         this.addChild(this.container)
         this.container.position.set((import.meta.env.VITE_APP_WIDTH - this.container.width)/2, (import.meta.env.VITE_APP_HEIGHT / 2) - 210)

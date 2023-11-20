@@ -1,12 +1,12 @@
 import * as PIXI from 'pixi.js'
 import type SlotMachine from '../slot-machine/SlotMachine'
-import Dropdown from '../utilities/DropDown'
+import Dropdown from '../utilities/Dropdown'
 
 export default class CheatPanel extends PIXI.Container {
     private button:PIXI.Sprite
     private dropdown:Dropdown
     private container: PIXI.Container
-    constructor (machine: SlotMachine) {
+    constructor (_machine: SlotMachine) {
         super()
 
         this.container = new PIXI.Container()

@@ -72,4 +72,22 @@ const dropdownTextStyle: Partial<PIXI.ITextStyle> = {
     wordWrap: true
 }
 
-export { labelTextStyle, goldenTextStyle, goldenBigTextStyle, lightTextStyle, dropdownTextStyle }
+const fpsTextStyle: Partial<PIXI.ITextStyle> = {
+    fontFamily: ['Helvetica', 'serif'],
+    fontSize: 16,
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fill: '#ffffff'
+}
+
+const buttonTextStyle: Partial<PIXI.ITextStyle> = {
+    fontFamily: ['Helvetica', 'serif'],
+    fontSize: 22,
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fill: ['#7D6001', '#A37F17'],
+    stroke: '#664A09',
+    strokeThickness: 0,
+}
+
+export { labelTextStyle, buttonTextStyle, goldenTextStyle, goldenBigTextStyle, lightTextStyle, dropdownTextStyle, fpsTextStyle }

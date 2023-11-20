@@ -14,7 +14,6 @@ export default class SlotSymbol extends PIXI.Container {
         this.swap()
         /*
         this.loadSheet().then(()=>{
-            console.log(this.sheet.data.frames)
             this.swap()
         }).catch((e) => {
             console.log(e)
@@ -29,7 +28,6 @@ export default class SlotSymbol extends PIXI.Container {
     public swap (index: number|null = null): void {
         const n = import.meta.env.VITE_APP_NUM_SLOT_SYMBOLS
         this.index = index ?? Math.floor(Math.random() * (n > 7 ? 7 : n))
-        console.log(`assets/images/slot-symbol${this.index}.png`)
         // this.sprite.texture = PIXI.Texture.from(this.sheet.data.frames[`${this.index}`].image)
         this.sprite.texture = PIXI.Texture.from(`assets/images/slot-symbol${this.index}.png`)
         this.sprite.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.LINEAR

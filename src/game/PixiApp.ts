@@ -1,9 +1,6 @@
 import * as PIXI from 'pixi.js'
-import SlotMachine from '../ui/slot-machine/SlotMachine'
-import FpsCounter from '../ui/FpsCounter'
 
 export default class PixiApp extends PIXI.Application{
-  public counter: FpsCounter
 
   constructor (canvas:HTMLCanvasElement) {
     const appHeight = import.meta.env.VITE_APP_HEIGHT
@@ -11,28 +8,15 @@ export default class PixiApp extends PIXI.Application{
     
     super({
       view: canvas,
-      background: '#222222',
+      background: '#000000',
       height: appHeight,
-      width: appWidth
+      width: appWidth,
+      resolution: window.devicePixelRatio || 1,
+      autoDensity: true,
     })
 
-    this.counter = new FpsCounter()
-  }
+    this.bindDevTools()
 
-  setStage = ():void => {
-    const machine = new SlotMachine(540, 275)
-    this.stage.addChild(machine)
-    // this.stage.addChild(new Credits())
-    if(import.meta.env.VITE_APP_FPS === 'on'){
-      this.stage.addChild(this.counter)
-      if(import.meta.env.VITE_APP_ENGINE === 'pixi'){
-        this.ticker.add(() => {
-            if(this.counter!=null){
-              this?.counter.setFPS(this.ticker.FPS)
-            }
-        })
-      }
-    }
   }
 
   bindDevTools = ():void => {
