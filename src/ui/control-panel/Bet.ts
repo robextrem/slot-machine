@@ -25,4 +25,9 @@ export default class Bet extends PIXI.Container {
         this.addChild(this.container)
     }
 
+    
+    getValue = (): number => {
+        return this.betSelector.getBet()
+    }
+
 }

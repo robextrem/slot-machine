@@ -15,7 +15,10 @@ export default class NumberSelector extends PIXI.Container {
         this.container = new PIXI.Container()
         
         this.minusButton = new SmallButton('-',()=>{
-            this.setBet(parseFloat(this.betText.text)-100)
+            const n = parseFloat(this.betText.text) - 100
+            if(n>0){
+                this.setBet(n)
+            }
         })
         this.container.addChild(this.minusButton)
 
@@ -45,6 +48,10 @@ export default class NumberSelector extends PIXI.Container {
 
     setBet = (x:number): void => {
         this.betText.text = x
+    }
+
+    getBet = (): number => {
+        return Number(this.betText.text)
     }
 
 }

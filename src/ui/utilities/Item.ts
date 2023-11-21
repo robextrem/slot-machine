@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import { dropdownTextStyle } from '../../helpers/textStyles'
 
 export default class Item extends PIXI.Container {
-    constructor (t:string, index:number) {
+    constructor (t:string, _i:number) {
         super()
         const bottom: PIXI.Graphics = new PIXI.Graphics()
         bottom.beginFill(0x000000, 0.85)

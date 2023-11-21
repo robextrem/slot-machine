@@ -6,7 +6,7 @@ export default class PanelData extends PIXI.Container {
     private container: PIXI.Container
     private bet: Bet
     private balance: InfoBlock
-    private lastRoundStake: InfoBlock
+    private lastWin: InfoBlock
     private lastBet: InfoBlock
 
     constructor () {
@@ -22,11 +22,11 @@ export default class PanelData extends PIXI.Container {
         this.balance.position.set(width * 0 + margin, 0)
         this.container.addChild(this.balance)
 
-        this.lastRoundStake = new InfoBlock('Last St','1000')
-        this.lastRoundStake.position.set(width + margin, 0)
-        this.container.addChild(this.lastRoundStake)
+        this.lastWin = new InfoBlock('Last Win','0')
+        this.lastWin.position.set(width + margin, 0)
+        this.container.addChild(this.lastWin)
 
-        this.lastBet = new InfoBlock('Last Bet','50000')
+        this.lastBet = new InfoBlock('Last Bet','0')
         this.lastBet.position.set(width * 2 + margin, 0)
         this.container.addChild(this.lastBet)
 
@@ -38,5 +38,17 @@ export default class PanelData extends PIXI.Container {
 
     getBalance = (): InfoBlock => {
         return this.balance
+    }
+
+    getLastWin = (): InfoBlock => {
+        return this.lastWin
+    }
+
+    getLastBet = (): InfoBlock => {
+        return this.lastBet
+    }
+
+    getBet = (): Bet => {
+        return this.bet
     }
 }

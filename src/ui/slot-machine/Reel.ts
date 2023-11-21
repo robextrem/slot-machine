@@ -53,7 +53,7 @@ export default class Reel extends PIXI.Container {
           return 
 
         const blockSize = import.meta.env.VITE_APP_HEIGHT / (import.meta.env.VITE_APP_NUM_SLOTS + 1)
-        this.slots.forEach((slot:Slot) => {
+        this.slots.forEach((slot:Slot, n) => {
           const pixel = 1
           const lastY = slot.y
           const tween = gsap.timeline({ repeat: 0 })
@@ -77,7 +77,9 @@ export default class Reel extends PIXI.Container {
             duration:0.3,
             ease: 'elastic.out',
             onComplete: () => {
-              cb()
+              if(n === this.slots.length-1){
+                cb()
+              }
               this.isSpinning=false
             }
           }).to(this, {

@@ -26,7 +26,7 @@ export class MainScreenScene extends Container implements IScene {
         this.button.height=91
         this.button.position.set(appWidth/2 - 110, appHeight/2 - 45)
 
-        const playText = new Text('Start the Game', buttonTextStyle)
+        const playText = new Text('Start Game', buttonTextStyle)
         playText.eventMode = 'static'
         playText.cursor = 'pointer'
         playText.position.set(110, 45)

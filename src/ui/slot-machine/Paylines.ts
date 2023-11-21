@@ -3,7 +3,6 @@ import { goldenBigTextStyle } from '../../helpers/textStyles'
 
 export default class Earnings extends PIXI.Container {
     private container: PIXI.Container
-    private valueText: PIXI.Text
 
     constructor () {
         super()
@@ -15,22 +14,13 @@ export default class Earnings extends PIXI.Container {
         this.container.addChild(coin)
 
         const style = new PIXI.TextStyle(goldenBigTextStyle)
-        this.valueText = new PIXI.Text('50000', style)
+        const playText = new PIXI.Text('50000', style)
     
-        this.valueText.x = 55
-        this.container.addChild(this.valueText)
+        playText.x = 55
+        this.container.addChild(playText)
         this.addChild(this.container)
         this.container.position.set((import.meta.env.VITE_APP_WIDTH - this.container.width)/2, (import.meta.env.VITE_APP_HEIGHT / 2) - 210)
-        this.visible=false
-    }
 
-
-    setValue = (x:number): void => {
-        this.valueText.text = x
-    }
-
-    setVisible = (visible:boolean):void =>{
-        this.visible = visible
     }
 
 }

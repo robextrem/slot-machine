@@ -3,7 +3,7 @@ import type SlotMachine from '../slot-machine/SlotMachine'
 import { Manager } from '../../game/Manager'
 import { MainScreenScene } from '../../scenes/MainScreenScene'
 
-export default class CheatPanel extends PIXI.Container {
+export default class Close extends PIXI.Container {
     private button:PIXI.Sprite
     private container: PIXI.Container
     constructor (_machine: SlotMachine) {

@@ -81,13 +81,11 @@ const fpsTextStyle: Partial<PIXI.ITextStyle> = {
 }
 
 const buttonTextStyle: Partial<PIXI.ITextStyle> = {
-    fontFamily: ['Helvetica', 'serif'],
-    fontSize: 22,
+    fontFamily: ['Roboto Slab','Helvetica Neue','Helvetica', 'serif'],
+    fontSize: 23,
     fontStyle: 'normal',
     fontWeight: 'bold',
     fill: ['#7D6001', '#A37F17'],
-    stroke: '#664A09',
-    strokeThickness: 0,
 }
 
 export { labelTextStyle, buttonTextStyle, goldenTextStyle, goldenBigTextStyle, lightTextStyle, dropdownTextStyle, fpsTextStyle }
