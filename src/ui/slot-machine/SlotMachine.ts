@@ -6,6 +6,7 @@ import Close from '../layout/Close'
 import Earnings from './Earnings'
 import FpsCounter from '../../game/FpsCounter'
 import GameSocket from '../../ws/GameSocket'
+import { winnerTextStyle } from '../../helpers/textStyles'
 import { getRandomSymbols, getVisibleLines, getPaylines } from '../../helpers/paylines'
 
 export default class SlotMachine extends PIXI.Container {
@@ -16,17 +17,20 @@ export default class SlotMachine extends PIXI.Container {
     private earnings: Earnings
     private container: PIXI.Container
     private gameSocket: GameSocket
+    private winningSign: PIXI.Text
     private requestType: string
     private lastBet: number
 
     constructor (width: number, height: number) {
         super()
+        const appHeight = import.meta.env.VITE_APP_HEIGHT
+        const appWidth = import.meta.env.VITE_APP_WIDTH
 
         const img = PIXI.Sprite.from('assets/images/bg.png')
-        img.width = import.meta.env.VITE_APP_WIDTH
-        img.height = import.meta.env.VITE_APP_HEIGHT
+        img.width = appWidth
+        img.height = appHeight
         img.anchor.set(0.5)
-        img.position.set(import.meta.env.VITE_APP_WIDTH / 2 , import.meta.env.VITE_APP_HEIGHT / 2)
+        img.position.set(appWidth/ 2 , appHeight / 2)
 
         this.addChild(img)
 
@@ -60,6 +64,14 @@ export default class SlotMachine extends PIXI.Container {
         if(import.meta.env.VITE_APP_USE_WEB_SOCKET === 'on' && !this.gameSocket.isClosed()){
             this.gameSocket.init()
         }
+        
+
+        const style = new PIXI.TextStyle(winnerTextStyle)
+        this.winningSign = new PIXI.Text('WIN!', style)
+        this.winningSign.visible=false
+        this.winningSign.position.set(appWidth/2, 45)
+        this.winningSign.anchor.set(0.5)
+        this.addChild(this.winningSign)
 
     }
 
@@ -88,8 +100,10 @@ export default class SlotMachine extends PIXI.Container {
         const delay = import.meta.env.VITE_APP_SPIN_DELAY
         const reels = this.reelGroup.getReels()
         this.earnings.setVisible(false)
+        this.winningSign.visible=false
 
         reels.forEach((reel, i) => {
+            reel.resetSlots()
             reel.spin(duration, delay, () => {
                 if(i === import.meta.env.VITE_APP_NUM_REELS - 1){
                     this.panel.getButton().changeState('idle')
@@ -105,7 +119,8 @@ export default class SlotMachine extends PIXI.Container {
         const panelData = this.panel.getPanelData()
         console.log(paylines)
         const currentBalance:number = panelData.getBalance().getValue()
-        // Si p viene vacio, restarle al balance
+
+        /** Esta es la condición de victoria */
         if(paylines.length>0){
             let stake = this.lastBet
 
@@ -116,14 +131,15 @@ export default class SlotMachine extends PIXI.Container {
 
             panelData.getBalance().setValue(Math.ceil(currentBalance + stake))
             panelData.getLastWin().setValue(stake)
-            panelData.getLastBet().setValue(this.lastBet)
 
             this.earnings.setValue(stake)
             this.earnings.setVisible(true)
-
+            this.winningSign.visible=true
+            this.winningAnimation(paylines)
         }else{
-            panelData.getLastWin().setValue(0)
+            // panelData.getLastWin().setValue(0)
         }
+        panelData.getLastBet().setValue(this.lastBet)
     }
 
     addFPS = ():void => {
@@ -141,5 +157,27 @@ export default class SlotMachine extends PIXI.Container {
 
     setRequestType = (requestType:string):void =>{
         this.requestType=requestType
+    }
+
+    winningAnimation = (paylines:any):void =>{
+        const reels = this.reelGroup.getReels()
+        const colors = ['#6CD1FC', '#FF49BE', '#A44FE4', '#E2D3DB', '#63A6F5', '#FD442C', '#CC79C4']
+
+        paylines.forEach((p:any)=>{
+            const color = colors[p.symbol]
+
+            p.payline.forEach((result:any)=>{               
+                for(let i = 0; i<p.frequency; i++){
+                    if(result.x === reels[i].index){
+                        const slots = reels[i].getSlots()
+                        slots.forEach((slot)=>{
+                            if(slot.index===(result.y)){
+                                slot.setWinning(true, color)
+                             }  
+                        })
+                    }
+                }
+            })
+        })
     }
 }

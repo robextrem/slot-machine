@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 
 export default class SlotSymbol extends PIXI.Container {
-    private index: number
+    public index: number
     private sprite: PIXI.Sprite
     // private sheet: any
 
