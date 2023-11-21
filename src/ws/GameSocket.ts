@@ -35,8 +35,8 @@ export default class GameSocket{
         })
     }
 
-    requestSymbols = ():void => {
-        this.socket.send('symbols')
+    requestSymbols = (request:string='symbols'):void => {
+        this.socket.send(request)
     }
 
     isClosed = ():boolean => {

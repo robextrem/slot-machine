@@ -69,6 +69,7 @@ const dropdownTextStyle: Partial<PIXI.ITextStyle> = {
     fill: ['#D1CFCF', '#D8D1CD'],
     stroke: '#000',
     strokeThickness: 1,
+    dropShadow: false,
     wordWrap: true
 }
 
@@ -82,7 +83,7 @@ const fpsTextStyle: Partial<PIXI.ITextStyle> = {
 
 const buttonTextStyle: Partial<PIXI.ITextStyle> = {
     fontFamily: ['Roboto Slab','Helvetica Neue','Helvetica', 'serif'],
-    fontSize: 23,
+    fontSize: 22,
     fontStyle: 'normal',
     fontWeight: 'bold',
     fill: ['#7D6001', '#A37F17'],

@@ -18,7 +18,9 @@ export default class Close extends PIXI.Container {
         this.button.cursor = 'pointer'
 
         this.button.addEventListener('pointerdown',()=>{
-            Manager.changeScene(new MainScreenScene())
+            if(confirm('Are you sure you want to leave the game?')){
+                Manager.changeScene(new MainScreenScene())
+            }
         })
         this.container.addChild(this.button)
         

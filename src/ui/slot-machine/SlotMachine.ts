@@ -16,6 +16,7 @@ export default class SlotMachine extends PIXI.Container {
     private earnings: Earnings
     private container: PIXI.Container
     private gameSocket: GameSocket
+    private requestType: string
     private lastBet: number
 
     constructor (width: number, height: number) {
@@ -50,6 +51,8 @@ export default class SlotMachine extends PIXI.Container {
 
         this.gameSocket = new GameSocket(this)
 
+        this.requestType='symbols'
+
         if(import.meta.env.VITE_APP_FPS === 'on'){
             this.addFPS()
         }
@@ -62,14 +65,13 @@ export default class SlotMachine extends PIXI.Container {
 
     startPlay = (): void => {
         this.setBet()
-
         if(import.meta.env.VITE_APP_USE_WEB_SOCKET === 'on' && !this.gameSocket.isClosed()){
-            this.gameSocket.requestSymbols()
+            this.gameSocket.requestSymbols(this.requestType)
         }else{
-            const x = Number(process.env.VITE_APP_NUM_SLOTS) + 2
-            const y = Number(process.env.VITE_APP_NUM_REELS)
-            const n = Number(process.env.VITE_APP_NUM_SLOT_SYMBOLS)
-            
+            const x = Number(import.meta.env.VITE_APP_NUM_SLOTS) + 2
+            const y = Number(import.meta.env.VITE_APP_NUM_REELS)
+            const n = Number(import.meta.env.VITE_APP_NUM_SLOT_SYMBOLS)
+
             this.reelGroup.setSymbols(getRandomSymbols(x,y,n))
             this.startSpin()
         }
@@ -100,26 +102,27 @@ export default class SlotMachine extends PIXI.Container {
     checkPaylines = ():void =>{
         const lines = getVisibleLines(this.reelGroup.getSymbols())
         const paylines = getPaylines(lines)
+        const panelData = this.panel.getPanelData()
         console.log(paylines)
-        const currentBalance:number = this.panel.getPanelData().getBalance().getValue()
+        const currentBalance:number = panelData.getBalance().getValue()
         // Si p viene vacio, restarle al balance
         if(paylines.length>0){
             let stake = this.lastBet
 
             paylines.forEach((payline)=>{
-                const multiplier = (payline.frequency / 2.5) -1
+                const multiplier = (payline.frequency / 2.5) - 1
                 stake += this.lastBet * multiplier
             })
 
-            this.panel.getPanelData().getBalance().setValue(Math.ceil(currentBalance + stake))
-            this.panel.getPanelData().getLastWin().setValue(stake)
-            this.panel.getPanelData().getLastBet().setValue(this.lastBet)
+            panelData.getBalance().setValue(Math.ceil(currentBalance + stake))
+            panelData.getLastWin().setValue(stake)
+            panelData.getLastBet().setValue(this.lastBet)
 
             this.earnings.setValue(stake)
             this.earnings.setVisible(true)
 
         }else{
-            this.panel.getPanelData().getLastWin().setValue(0)
+            panelData.getLastWin().setValue(0)
         }
     }
 
@@ -134,5 +137,9 @@ export default class SlotMachine extends PIXI.Container {
 
     getReelGroup = (): ReelGroup => {
         return this.reelGroup
+    }
+
+    setRequestType = (requestType:string):void =>{
+        this.requestType=requestType
     }
 }
