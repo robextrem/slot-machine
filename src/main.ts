@@ -1,4 +1,3 @@
-
 import './assets/sass/styles.scss'
 import { Manager } from './game/Manager'
 import { MainScreenScene } from './scenes/MainScreenScene'

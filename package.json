@@ -8,7 +8,12 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "format": "prettier --write --no-semi \"**/*.ts\"",
     "server": "ts-mocha -n loader=ts-node/esm -p tsconfig.json server/index.ts --trace-warnings"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.4.0",
