@@ -1,11 +1,10 @@
 import * as PIXI from 'pixi.js'
 
-export default class PixiApp extends PIXI.Application{
-
-  constructor (canvas:HTMLCanvasElement) {
+export default class PixiApp extends PIXI.Application {
+  constructor(canvas: HTMLCanvasElement) {
     const appHeight = import.meta.env.VITE_APP_HEIGHT
     const appWidth = import.meta.env.VITE_APP_WIDTH
-    
+
     super({
       view: canvas,
       background: '#000000',
@@ -16,11 +15,10 @@ export default class PixiApp extends PIXI.Application{
     })
 
     this.bindDevTools()
-
   }
 
-  bindDevTools = ():void => {
-      /* @ts-expect-error */
-      globalThis.__PIXI_APP__ = this
+  bindDevTools = (): void => {
+    /* @ts-expect-error */
+    globalThis.__PIXI_APP__ = this
   }
 }
