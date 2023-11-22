@@ -17,13 +17,13 @@ export default class Earnings extends PIXI.Container {
         const style = new PIXI.TextStyle(goldenBigTextStyle)
         this.valueText = new PIXI.Text('50000', style)
     
-        this.valueText.x = 55
+        this.valueText.x = 105
+        this.valueText.anchor.set(0.5, 0)
         this.container.addChild(this.valueText)
         this.addChild(this.container)
         this.container.position.set((import.meta.env.VITE_APP_WIDTH - this.container.width)/2, (import.meta.env.VITE_APP_HEIGHT / 2) - 210)
         this.visible=false
     }
-
 
     setValue = (x:number): void => {
         this.valueText.text = x

@@ -7,7 +7,7 @@ export default class MainButton extends PIXI.Container {
     private button: PIXI.Sprite
     private state: string
 
-    constructor (cb: any) {
+    constructor (cb: ()=>void) {
         super()
         this.state = 'idle'
         this.idleState = PIXI.Texture.from('assets/images/button-idle.png')

@@ -19,7 +19,7 @@ export class MainScreenScene extends Container implements IScene {
 
         this.addChild(img)
 
-        this.button = Sprite.from('../src/assets/images/button.png')
+        this.button = Sprite.from('assets/images/button.png')
         this.button.eventMode = 'static'
         this.button.cursor = 'pointer'
         this.button.width=220

@@ -26,6 +26,8 @@ export default class SlotMachine extends PIXI.Container {
         const appHeight = import.meta.env.VITE_APP_HEIGHT
         const appWidth = import.meta.env.VITE_APP_WIDTH
 
+        this.lastBet=0
+
         const img = PIXI.Sprite.from('assets/images/bg.png')
         img.width = appWidth
         img.height = appHeight
@@ -46,10 +48,6 @@ export default class SlotMachine extends PIXI.Container {
         this.panel = new ControlPanel(this)
         this.container.addChild(this.panel)
 
-        this.cheatPanel = new CheatPanel(this)
-        this.container.addChild(this.cheatPanel)
-        this.lastBet=0
-
         this.close = new Close(this)
         this.container.addChild(this.close)
 
@@ -65,6 +63,8 @@ export default class SlotMachine extends PIXI.Container {
             this.gameSocket.init()
         }
         
+        this.cheatPanel = new CheatPanel(this)
+        this.container.addChild(this.cheatPanel)
 
         const style = new PIXI.TextStyle(winnerTextStyle)
         this.winningSign = new PIXI.Text('WIN!', style)
@@ -117,7 +117,7 @@ export default class SlotMachine extends PIXI.Container {
         const lines = getVisibleLines(this.reelGroup.getSymbols())
         const paylines = getPaylines(lines)
         const panelData = this.panel.getPanelData()
-        console.log(paylines)
+
         const currentBalance:number = panelData.getBalance().getValue()
 
         /** Esta es la condición de victoria */
@@ -136,9 +136,8 @@ export default class SlotMachine extends PIXI.Container {
             this.earnings.setVisible(true)
             this.winningSign.visible=true
             this.winningAnimation(paylines)
-        }else{
-            // panelData.getLastWin().setValue(0)
         }
+        
         panelData.getLastBet().setValue(this.lastBet)
     }
 
@@ -146,6 +145,10 @@ export default class SlotMachine extends PIXI.Container {
         const counter = new FpsCounter()
         this.addChild(counter)
     }
+
+    getGameSocket = (): GameSocket => {
+        return this.gameSocket
+    } 
 
     getControlPanel = (): ControlPanel => {
         return this.panel
@@ -163,10 +166,9 @@ export default class SlotMachine extends PIXI.Container {
         const reels = this.reelGroup.getReels()
         const colors = ['#6CD1FC', '#FF49BE', '#A44FE4', '#E2D3DB', '#63A6F5', '#FD442C', '#CC79C4']
 
-        paylines.forEach((p:any)=>{
+        for(const p of paylines){
             const color = colors[p.symbol]
-
-            p.payline.forEach((result:any)=>{               
+            for(const result of p.payline){               
                 for(let i = 0; i<p.frequency; i++){
                     if(result.x === reels[i].index){
                         const slots = reels[i].getSlots()
@@ -177,7 +179,7 @@ export default class SlotMachine extends PIXI.Container {
                         })
                     }
                 }
-            })
-        })
+            }
+        }
     }
 }

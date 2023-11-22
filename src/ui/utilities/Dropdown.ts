@@ -54,15 +54,20 @@ export default class Dropdown extends PIXI.Container {
         ]
 
         cheatItems.forEach((_,i)=>{
-            const item = new Item(_.text, _.selected,()=>{
-                this.items.forEach((i)=>{
-                    i.setIsActive(false)
+                const item = new Item(_.text, _.selected,()=>{
+                    this.items.forEach((i)=>{
+                        i.setIsActive(false)
+                    })
+                    if(import.meta.env.VITE_APP_USE_WEB_SOCKET === 'on' && !machine.getGameSocket().isClosed()){
+                        machine.setRequestType(_.request)
+                    }else{
+                        alert('Server is required for this feature to work properly')
+                    }
                 })
-                machine.setRequestType(_.request)
-            })
-            item.position.set(0, 40*i)
-            this.items.push(item)
-            this.addChild(item)
+                item.position.set(0, 40*i)
+                this.items.push(item)
+                this.addChild(item)
+            
         })
     }
 

@@ -11,11 +11,12 @@ export default class NumberSelector extends PIXI.Container {
     constructor () {
         super()
         const goldenStyle = new PIXI.TextStyle(goldenTextStyle)
+        const baseNumber = Number(import.meta.env.VITE_APP_BET_UNIT)
 
         this.container = new PIXI.Container()
         
         this.minusButton = new SmallButton('-',()=>{
-            const n = parseFloat(this.betText.text) - 100
+            const n = parseFloat(this.betText.text) - baseNumber
             if(n>0){
                 this.setBet(n)
             }
@@ -28,7 +29,7 @@ export default class NumberSelector extends PIXI.Container {
         bet.drawRect(0, 0, 110, 40)
         bet.endFill()
 
-        this.betText = new PIXI.Text('100', goldenStyle)
+        this.betText = new PIXI.Text(baseNumber, goldenStyle)
         bet.x = this.minusButton.position.x + this.minusButton.width / 2 + 5
         bet.addChild(this.betText)
 
@@ -38,7 +39,7 @@ export default class NumberSelector extends PIXI.Container {
         this.container.addChild(bet)
 
         this.plusButton = new SmallButton('+',()=>{
-            this.setBet(parseInt(this.betText.text) + 100)
+            this.setBet(parseInt(this.betText.text) + baseNumber)
         })
         this.plusButton.x+=bet.width+ this.minusButton.width + 5 * 2
         this.container.addChild(this.plusButton)
