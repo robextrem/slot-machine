@@ -6,7 +6,7 @@ gsap.registerPlugin(PixiPlugin)
 PixiPlugin.registerPIXI(PIXI)
 
 export default class Reel extends PIXI.Container {
-    private index: number
+    public index: number
     private numberOfSlots: number
     private slots: Slot[]
     private symbols: number[]
@@ -39,12 +39,16 @@ export default class Reel extends PIXI.Container {
         this.addChild(this.container)
 
         for (let i = 0; i < this.numberOfSlots + 2; i++) {
-            const slot = new Slot(this.reelWidth, i)
+            const slot = new Slot(this.reelWidth, this.reelHeight/this.numberOfSlots, i)
             this.container.addChild(slot)
             this.slots.push(slot)
         }
 
         this.initialPosition()
+    }
+
+    public getSlots():Slot[]{
+      return this.slots
     }
 
     public spin = (duration: number, delay: number, cb: () => void): void => {
@@ -53,7 +57,7 @@ export default class Reel extends PIXI.Container {
           return 
 
         const blockSize = import.meta.env.VITE_APP_HEIGHT / (import.meta.env.VITE_APP_NUM_SLOTS + 1)
-        this.slots.forEach((slot:Slot) => {
+        this.slots.forEach((slot:Slot, n) => {
           const pixel = 1
           const lastY = slot.y
           const tween = gsap.timeline({ repeat: 0 })
@@ -77,7 +81,9 @@ export default class Reel extends PIXI.Container {
             duration:0.3,
             ease: 'elastic.out',
             onComplete: () => {
-              cb()
+              if(n === this.slots.length-1){
+                cb()
+              }
               this.isSpinning=false
             }
           }).to(this, {
@@ -97,4 +103,11 @@ export default class Reel extends PIXI.Container {
   setSymbols = (symbols: number[]): void =>{
     this.symbols = symbols
   }
+
+  resetSlots = ():void =>{
+    this.slots.forEach((slot:Slot)=>{
+      slot.setWinning(false)
+    })
+  }
+
 }

@@ -6,18 +6,18 @@ export default class CheatPanel extends PIXI.Container {
     private button:PIXI.Sprite
     private dropdown:Dropdown
     private container: PIXI.Container
-    constructor (_machine: SlotMachine) {
+    constructor (machine: SlotMachine) {
         super()
 
         this.container = new PIXI.Container()
-        this.button = PIXI.Sprite.from('../src/assets/images/question.png')
+        this.button = PIXI.Sprite.from('assets/images/question.png')
         this.button.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.LINEAR
         this.button.width = 55
         this.button.height = 46
         this.button.eventMode = 'static'
         this.button.cursor = 'pointer'
 
-        this.dropdown = new Dropdown(import.meta.env.VITE_APP_WIDTH - 200, 60)
+        this.dropdown = new Dropdown(import.meta.env.VITE_APP_WIDTH - 200, 60, machine)
         this.addChild(this.dropdown)
 
         this.button.addEventListener('pointerdown',()=>{

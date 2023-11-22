@@ -2,15 +2,7 @@ import { type WebSocket } from 'ws'
 import { generatePaylines } from '../logic/Payline.ts'
 
 const messageHandler = (message:string, ws:WebSocket): void=>{
-    let response
-    
-    switch(message){
-        case 'symbols': {
-            response = generatePaylines()
-            break
-        }
-    }
-
+    const response = generatePaylines(message)
     ws.send(JSON.stringify(response))
 }
 

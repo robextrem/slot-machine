@@ -47,11 +47,14 @@ export default class ReelGroup extends PIXI.Container {
 
     setSymbols = (symbols:number[][]):void =>{
         this.symbols = symbols
+        
+        /** Se voltean los simbolos */
         this.getReels().forEach((reel, i)=>{
             const horizontal = symbols[0].map((_, j) =>
                 symbols.map((row) => row[j])
             )
             reel.setSymbols(horizontal[i])
         })
+
     }
 }

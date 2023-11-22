@@ -33,6 +33,23 @@ const goldenTextStyle: Partial<PIXI.ITextStyle> = {
     wordWrap: true
 }
 
+const winnerTextStyle: Partial<PIXI.ITextStyle> = {
+    fontFamily: ['Roboto Slab', 'Helvetica'],
+    fontSize: 48,
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fill: ['#198502', '#03FF9A'],
+    stroke: '#038F4F',
+    strokeThickness: 1.8,
+    dropShadow: true,
+    dropShadowColor: '#000000',
+    letterSpacing:1,
+    dropShadowBlur: 1,
+    dropShadowAngle: Math.PI / 6,
+    dropShadowDistance: 4,
+    wordWrap: true
+}
+
 const goldenBigTextStyle: Partial<PIXI.ITextStyle> = {
     fontFamily: ['Roboto Slab', 'Helvetica'],
     fontSize: 40,
@@ -69,6 +86,7 @@ const dropdownTextStyle: Partial<PIXI.ITextStyle> = {
     fill: ['#D1CFCF', '#D8D1CD'],
     stroke: '#000',
     strokeThickness: 1,
+    dropShadow: false,
     wordWrap: true
 }
 
@@ -81,13 +99,11 @@ const fpsTextStyle: Partial<PIXI.ITextStyle> = {
 }
 
 const buttonTextStyle: Partial<PIXI.ITextStyle> = {
-    fontFamily: ['Helvetica', 'serif'],
+    fontFamily: ['Roboto Slab','Helvetica Neue','Helvetica', 'serif'],
     fontSize: 22,
     fontStyle: 'normal',
     fontWeight: 'bold',
     fill: ['#7D6001', '#A37F17'],
-    stroke: '#664A09',
-    strokeThickness: 0,
 }
 
-export { labelTextStyle, buttonTextStyle, goldenTextStyle, goldenBigTextStyle, lightTextStyle, dropdownTextStyle, fpsTextStyle }
+export { labelTextStyle, buttonTextStyle, winnerTextStyle, goldenTextStyle, goldenBigTextStyle, lightTextStyle, dropdownTextStyle, fpsTextStyle }

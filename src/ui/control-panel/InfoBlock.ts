@@ -44,14 +44,17 @@ export default class InfoBlock extends PIXI.Container {
                 duration:0.5,
                 end: x,
                 onUpdate: () => {
+                    /* @ts-expect-error */
                     this.valueText.text = Math.ceil(tween.targets()[0].end)
                 },
             })
         }else{
             this.valueText.text = x
         }
+    }
 
-
+    getValue = (): number => {
+        return parseInt(this.valueText.text)
     }
 
 }

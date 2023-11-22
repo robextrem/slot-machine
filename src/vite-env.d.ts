@@ -2,7 +2,6 @@
 
 interface ImportMetaEnv {
     readonly VITE_APP_VERSION: string,
-    readonly VITE_APP_ENGINE: string,
     readonly VITE_APP_BACKEND_URL: string,
     readonly VITE_APP_FPS: string,
     readonly VITE_APP_USE_WEB_SOCKET: string,
@@ -16,6 +15,8 @@ interface ImportMetaEnv {
     readonly VITE_APP_REEL_SPEED: number,
     readonly VITE_APP_SPIN_DURATION: number,
     readonly VITE_APP_SPIN_DELAY: number,
+    readonly VITE_APP_BET_UNIT: number,
+    readonly VITE_APP_INFO_BLOCK_MARGIN: number,
     // more env variables...
   }
   

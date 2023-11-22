@@ -22,7 +22,6 @@ export default class ControlPanel extends PIXI.Container {
         bottom.beginFill(0x000000, 0.45)
         bottom.drawRect(0, 0, appWidth, this.panelHeight)
         bottom.endFill()
-        // bottom.alpha = 0.675
 
         this.container.addChild(bottom)
 

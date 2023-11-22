@@ -19,14 +19,14 @@ export class MainScreenScene extends Container implements IScene {
 
         this.addChild(img)
 
-        this.button = Sprite.from('../src/assets/images/button.png')
+        this.button = Sprite.from('assets/images/button.png')
         this.button.eventMode = 'static'
         this.button.cursor = 'pointer'
         this.button.width=220
         this.button.height=91
         this.button.position.set(appWidth/2 - 110, appHeight/2 - 45)
 
-        const playText = new Text('Start the Game', buttonTextStyle)
+        const playText = new Text('Start Game', buttonTextStyle)
         playText.eventMode = 'static'
         playText.cursor = 'pointer'
         playText.position.set(110, 45)
