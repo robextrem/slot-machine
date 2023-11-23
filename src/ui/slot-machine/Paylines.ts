@@ -8,7 +8,7 @@ export default class Earnings extends PIXI.Container {
     super()
     this.container = new PIXI.Container()
 
-    const coin = PIXI.Sprite.from('assets/images/coin.png')
+    const coin = PIXI.Sprite.from('coin')
     coin.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.LINEAR
     coin.position.y += 5
     this.container.addChild(coin)

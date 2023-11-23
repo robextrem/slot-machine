@@ -11,7 +11,7 @@ export class MainScreenScene extends Container implements IScene {
     const appHeight = import.meta.env.VITE_APP_HEIGHT
     const appWidth = import.meta.env.VITE_APP_WIDTH
 
-    const img = Sprite.from('assets/images/main.png')
+    const img = Sprite.from('mainBackground')
     img.width = import.meta.env.VITE_APP_WIDTH
     img.height = import.meta.env.VITE_APP_HEIGHT
     img.anchor.set(0.5)
@@ -22,7 +22,7 @@ export class MainScreenScene extends Container implements IScene {
 
     this.addChild(img)
 
-    this.button = Sprite.from('assets/images/button.png')
+    this.button = Sprite.from('button')
     this.button.eventMode = 'static'
     this.button.cursor = 'pointer'
     this.button.width = 220

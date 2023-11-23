@@ -10,7 +10,7 @@ export default class Close extends PIXI.Container {
     super()
 
     this.container = new PIXI.Container()
-    this.button = PIXI.Sprite.from('assets/images/close.png')
+    this.button = PIXI.Sprite.from('close')
     this.button.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.LINEAR
     this.button.width = 55
     this.button.height = 46

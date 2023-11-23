@@ -10,11 +10,11 @@ export default class MainButton extends PIXI.Container {
   constructor(cb: () => void) {
     super()
     this.state = 'idle'
-    this.idleState = PIXI.Texture.from('assets/images/button-idle.png')
+    this.idleState = PIXI.Texture.from('buttonIdle')
     this.idleState.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST
-    this.hoverState = PIXI.Texture.from('assets/images/button-hover.png')
+    this.hoverState = PIXI.Texture.from('buttonHover')
     this.hoverState.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST
-    this.pressedState = PIXI.Texture.from('assets/images/button-pressed.png')
+    this.pressedState = PIXI.Texture.from('buttonPressed')
     this.pressedState.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST
 
     this.button = new PIXI.Sprite(this.idleState)

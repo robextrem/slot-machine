@@ -1,8 +1,8 @@
 import './assets/sass/styles.scss'
 import { Manager } from './game/Manager'
-import { MainScreenScene } from './scenes/MainScreenScene'
+import { LoaderScene } from './scenes/LoaderScene'
 
 const canvas = document.querySelector('#canvas') as HTMLCanvasElement
 Manager.initialize(canvas)
-const main: MainScreenScene = new MainScreenScene()
-Manager.changeScene(main)
+const loader: LoaderScene = new LoaderScene()
+Manager.changeScene(loader)

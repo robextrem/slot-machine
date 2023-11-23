@@ -14,7 +14,7 @@ export default class ReelGroup extends PIXI.Container {
 
     const appWidth = import.meta.env.VITE_APP_WIDTH
 
-    const img = PIXI.Sprite.from('assets/images/board.png')
+    const img = PIXI.Sprite.from('board')
     img.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST
 
     img.width = 767
