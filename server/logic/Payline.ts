@@ -1,88 +1,63 @@
 import { getRandomSymbols } from '../../src/helpers/paylines.ts'
+import type PaylineResponse from '../../src/types/PaylineResponse.ts'
 
-const generatePaylines = (message: string): any => {
-  let response
-
+const generatePaylines = (message: string): PaylineResponse | null => {
   switch (message) {
     case 'symbols': {
       const x = Number(process.env.VITE_APP_NUM_SLOTS) + 2 || 5
       const y = Number(process.env.VITE_APP_NUM_REELS) || 5
       const n = Number(process.env.VITE_APP_NUM_SLOT_SYMBOLS) || 5
 
-      response = {
+      return {
         type: 'symbols',
-        data: {
-          symbols: getRandomSymbols(x, y, n),
-        },
+        symbols: getRandomSymbols(x, y, n),
       }
-      break
     }
     case '1pl3sym': {
-      response = {
+      return {
         type: 'symbols',
-        data: {
-          symbols: getLines1(),
-        },
+        symbols: getLines1(),
       }
-      break
     }
     case '1pl4sym': {
-      response = {
+      return {
         type: 'symbols',
-        data: {
-          symbols: getLines2(),
-        },
+        symbols: getLines2(),
       }
-      break
     }
     case '1pl5sym': {
-      response = {
+      return {
         type: 'symbols',
-        data: {
-          symbols: getLines4(),
-        },
+        symbols: getLines4(),
       }
-      break
     }
     case '2pl39': {
-      response = {
+      return {
         type: 'symbols',
-        data: {
-          symbols: getLines3and9(),
-        },
+        symbols: getLines3and9(),
       }
-      break
     }
     case '2pl58': {
-      response = {
+      return {
         type: 'symbols',
-        data: {
-          symbols: getLines5and8(),
-        },
+        symbols: getLines5and8(),
       }
-      break
     }
     case '2pl310': {
-      response = {
+      return {
         type: 'symbols',
-        data: {
-          symbols: getLines3and10(),
-        },
+        symbols: getLines3and10(),
       }
-      break
     }
     case '3pl367': {
-      response = {
+      return {
         type: 'symbols',
-        data: {
-          symbols: getLines3and6and7(),
-        },
+        symbols: getLines3and6and7(),
       }
-      break
     }
   }
 
-  return response
+  return null
 }
 
 // Combinacion: 1 3sym
