@@ -12,6 +12,7 @@ import {
   getVisibleLines,
   getPaylines,
 } from '../../helpers/paylines'
+import type Payline from '../../types/Payline'
 
 export default class SlotMachine extends PIXI.Container {
   private reelGroup: ReelGroup
@@ -177,7 +178,7 @@ export default class SlotMachine extends PIXI.Container {
     this.requestType = requestType
   }
 
-  winningAnimation = (paylines: any): void => {
+  winningAnimation = (paylines: Payline[]): void => {
     const reels = this.reelGroup.getReels()
     const colors = [
       '#6CD1FC',

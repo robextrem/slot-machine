@@ -1,4 +1,5 @@
 import type Payline from '../types/Payline'
+import type Coord from '../types/Coord'
 
 const paylines = [
   [
@@ -7,70 +8,70 @@ const paylines = [
     { x: 2, y: 0 },
     { x: 3, y: 0 },
     { x: 4, y: 0 },
-  ],
+  ] as Coord[],
   [
     { x: 0, y: 1 },
     { x: 1, y: 1 },
     { x: 2, y: 1 },
     { x: 3, y: 1 },
     { x: 4, y: 1 },
-  ],
+  ] as Coord[],
   [
     { x: 0, y: 2 },
     { x: 1, y: 2 },
     { x: 2, y: 2 },
     { x: 3, y: 2 },
     { x: 4, y: 2 },
-  ],
+  ] as Coord[],
   [
     { x: 0, y: 0 },
     { x: 1, y: 1 },
     { x: 2, y: 2 },
     { x: 3, y: 1 },
     { x: 4, y: 0 },
-  ],
+  ] as Coord[],
   [
     { x: 0, y: 2 },
     { x: 1, y: 1 },
     { x: 2, y: 0 },
     { x: 3, y: 1 },
     { x: 4, y: 2 },
-  ],
+  ] as Coord[],
   [
     { x: 0, y: 0 },
     { x: 1, y: 0 },
     { x: 2, y: 1 },
     { x: 3, y: 0 },
     { x: 4, y: 0 },
-  ],
+  ] as Coord[],
   [
     { x: 0, y: 2 },
     { x: 1, y: 2 },
     { x: 2, y: 1 },
     { x: 3, y: 2 },
     { x: 4, y: 2 },
-  ],
+  ] as Coord[],
   [
     { x: 0, y: 1 },
     { x: 1, y: 2 },
     { x: 2, y: 2 },
     { x: 3, y: 2 },
     { x: 4, y: 1 },
-  ],
+  ] as Coord[],
   [
     { x: 0, y: 1 },
     { x: 1, y: 0 },
     { x: 2, y: 0 },
     { x: 3, y: 0 },
     { x: 4, y: 1 },
-  ],
+  ] as Coord[],
   [
     { x: 0, y: 1 },
     { x: 1, y: 0 },
     { x: 2, y: 1 },
     { x: 3, y: 0 },
     { x: 4, y: 1 },
-  ],
+  ] as Coord[],
 ]
 
 const getRandomSymbols = (x: number, y: number, n: number): number[][] => {

@@ -16,9 +16,7 @@ export default class SlotSymbol extends PIXI.Container {
   public swap(index: number | null = null): void {
     const n = import.meta.env.VITE_APP_NUM_SLOT_SYMBOLS
     this.index = index ?? Math.floor(Math.random() * (n > 7 ? 7 : n))
-    this.sprite.texture = PIXI.Texture.from(
-      `slotSymbol${this.index}`,
-    )
+    this.sprite.texture = PIXI.Texture.from(`slotSymbol${this.index}`)
     this.sprite.texture.baseTexture.scaleMode = PIXI.SCALE_MODES.LINEAR
   }
 }

@@ -23,11 +23,11 @@ export default class GameSocket {
             .getControlPanel()
             .getPanelData()
             .getBalance()
-            .setValue(json.data.balance, true)
+            .setValue(json.balance, true)
           break
         }
         case 'symbols': {
-          this.slotMachine.getReelGroup().setSymbols(json.data.symbols)
+          this.slotMachine.getReelGroup().setSymbols(json.symbols)
           this.slotMachine.startSpin()
         }
       }
