@@ -32,7 +32,7 @@ export default class SlotMachine extends PIXI.Container {
 
     this.lastBet = 0
 
-    const img = PIXI.Sprite.from('assets/images/bg.png')
+    const img = PIXI.Sprite.from('slotBackground')
     img.width = appWidth
     img.height = appHeight
     img.anchor.set(0.5)
