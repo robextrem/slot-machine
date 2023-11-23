@@ -1,7 +1,9 @@
+import type Coord from './Coord'
+
 interface Payline {
   win: boolean
   index: number
-  payline: object
+  payline: Coord[]
   frequency: number
   symbol: number
 }
